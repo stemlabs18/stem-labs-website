@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM LABS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif; 
+  background-color: #f8f9fa; 
+  color: #333; 
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif; 
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo img { height: 80px; }
+
+.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover { color: #ff8c2a; }
+
+.login {
+  background: #ff8c2a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.3s ease;
+}
+
+.login:hover { background: #e07b22; }
+
+/* ---------------------------------------------------
+   1. HERO SECTION 
+--------------------------------------------------- */
+.hero {
+  height: 80vh;
+  background-color: #3b5998; 
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+  color: white;
+  position: relative;
+}
+
+.hero-content { 
+  max-width: 650px; 
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  font-size: 19px;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  margin-right: 15px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.hero-buttons a:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.demo { background: #4ecdc4; color: white; }
+.chat { background: #ff8c2a; color: white; }
+
+.custom-shape-divider-bottom-hero {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-hero svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+.custom-shape-divider-bottom-hero .shape-fill { fill: #ffffff; }
+
+/* ---------------------------------------------------
+   2. ABOUT SECTION 
+--------------------------------------------------- */
+.about-section {
+  background-color: #ffffff;
+  padding: 80px 50px 140px; 
+  display: flex;
+  justify-content: flex-start; 
+  position: relative;
+}
+
+.about-content {
+  max-width: 900px;
+  text-align: left;
+  z-index: 2;
+}
+
+.about-header {
+  border-left: 5px solid #ff8c2a;
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+
+.about-header h2 { font-size: 42px; color: #3b5998; margin-bottom: 10px; }
+.about-header h3 { font-size: 24px; color: #333; margin-bottom: 15px; }
+.about-header p { font-size: 18px; line-height: 1.7; color: #555; margin-bottom: 15px; }
+
+.about-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; 
+  margin-top: 30px;
+}
+
+.about-box {
+  background: #ffffff; 
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease; 
+}
+
+.about-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-color: #ff8c2a; 
+}
+
+.about-box h3 { color: #ff8c2a; font-size: 22px; margin-bottom: 20px; }
+
+.check-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  list-style: none;
+}
+
+.check-list li { font-size: 16px; color: #555; display: flex; align-items: center; gap: 8px; font-weight: 600;}
+
+.custom-shape-divider-bottom-about {
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.custom-shape-divider-bottom-about svg {
+    position: relative;
+    display: block;
+    width: calc(130% + 1.3px);
+    height: 150px;
+}
+.custom-shape-divider-bottom-about .shape-fill-1 { fill: #e07b22; opacity: 0.3; }
+.custom-shape-divider-bottom-about .shape-fill-2 { fill: #e07b22; opacity: 0.6; }
+.custom-shape-divider-bottom-about .shape-fill-3 { fill: #ff8c2a; }
+
+/* ---------------------------------------------------
+   3. WHAT WE OFFER 
+--------------------------------------------------- */
+.offer-section {
+  padding: 60px 40px 140px; 
+  background-color: #ff8c2a; 
+  position: relative;
+}
+
+.section-main-title {
+  text-align: center;
+  font-size: 45px;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.section-sub-title {
+  text-align: center;
+  font-size: 28px;
+  color: #fff; 
+  margin-bottom: 50px;
+  margin-top: 50px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.image-card {
+  background: #ffffff; 
+  border-radius: 16px; 
+  padding: 15px; 
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+}
+
+.image-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+}
+
+.image-card img {
+  width: 100%;
+  height: 140px; 
+  object-fit: cover;
+  border-radius: 12px; 
+  margin-bottom: 15px;
+}
+
+.card-info { text-align: left; padding: 0 5px; }
+.card-info h3 { color: #ff8c2a; font-size: 22px; margin-bottom: 8px; }
+.card-info p { color: #666666; font-size: 15px; line-height: 1.5; font-weight: 600; }
+
+.custom-shape-divider-bottom-offer {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-offer svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+.custom-shape-divider-bottom-offer .shape-fill { fill: #ffffff; }
+
+/* ---------------------------------------------------
+   4. VISION & BENEFITS SECTION
+--------------------------------------------------- */
+.vision-section {
+  background-color: #ffffff;
+  padding: 80px 50px 140px; 
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.vision-container {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  z-index: 2;
+}
+
+.vision-text-block h2 {
+  color: #3b5998;
+  font-size: 38px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #ff8c2a;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.vision-text-block p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.benefits-box {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.benefits-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-color: #ff8c2a;
+}
+
+.benefits-box h2 {
+  color: #ff8c2a;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.custom-shape-divider-bottom-vision {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-vision svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+.custom-shape-divider-bottom-vision .shape-fill { fill: #3b5998; }
+
+/* ---------------------------------------------------
+   5. REQUEST A DEMO / CONTACT SECTION 
+--------------------------------------------------- */
+.contact-section {
+  background-color: #3b5998; 
+  padding: 60px 40px 140px;
+  position: relative;
+}
+
+.contact-container {
+  max-width: 900px; 
+  margin: 0 auto;
+}
+
+.floating-form-block {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+}
+
+.floating-form-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border-color: #ff8c2a;
+}
+
+.floating-form-block h2 {
+  color: #3b5998;
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.form-panels {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.form-panel {
+  flex: 1;
+  background-color: #f1f4f8; 
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.form-panel h3 {
+  color: #3b5998;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ff8c2a;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.panel-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.form-group label span { color: red; }
+
+.form-group input, .form-group select {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: #ff8c2a;
+}
+
+.submit-btn-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center; 
+}
+
+.submit-btn {
+  background-color: #ff8c2a; 
+  color: white;
+  border: none;
+  padding: 18px 60px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 140, 42, 0.4);
+}
+
+.submit-btn:hover {
+  background-color: #e07b22; 
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 140, 42, 0.6);
+}
+
+.custom-shape-divider-bottom-contact {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-contact svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+.custom-shape-divider-bottom-contact .shape-fill { fill: #e3f2fd; }
+
+
+/* ---------------------------------------------------
+   6. EXPLORE OUR STEM DOMAINS 
+--------------------------------------------------- */
+.domains-section {
+  background-color: #e3f2fd; 
+  padding: 80px 40px 140px; 
+  position: relative;
+}
+
+.domains-section .section-main-title {
+  color: #3b5998; 
+  margin-bottom: 60px;
+}
+
+.custom-shape-divider-bottom-domains {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.custom-shape-divider-bottom-domains svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 90px;
+}
+.custom-shape-divider-bottom-domains .shape-fill { fill: #f1f4f8; } 
+
+/* ---------------------------------------------------
+   7. CURRICULUM SECTION 
+--------------------------------------------------- */
+.curriculum-section {
+  background-color: #f1f4f8; 
+  padding: 80px 40px 100px; 
+  text-align: center;
+  position: relative;
+}
+
+.curriculum-section .section-main-title {
+  color: #3b5998; 
+  margin-bottom: 20px;
+}
+
+.curriculum-desc {
+  font-size: 18px;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.main-download-btn {
+  background-color: #ff8c2a;
+  color: white;
+  padding: 16px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 140, 42, 0.4);
+}
+
+.main-download-btn:hover {
+  background-color: #e07b22;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 140, 42, 0.6);
+}
+
+.curriculum-section .section-sub-title {
+  color: #3b5998;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+
+.grades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.grade-card {
+  background: #ffffff;
+  padding: 25px 15px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.grade-card:hover {
+  transform: translateY(-5px);
+  border-color: #4ecdc4;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.grade-card h4 {
+  color: #3b5998;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.grade-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #4ecdc4;
+  font-weight: bold;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.grade-card:hover .grade-download {
+  color: #3b5998;
+}
+
+/* ---------------------------------------------------
+   8. FOOTER / SOCIAL CONTACT
+--------------------------------------------------- */
+.footer-section {
+  background-color: #1a1a2e; 
+  color: white;
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+.footer-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #2a2a4a;
+  color: white;
+  border-radius: 50%;
+  font-size: 24px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  background-color: #ff8c2a;
+  box-shadow: 0 10px 20px rgba(255, 140, 42, 0.4);
+}
+
+.footer-bottom {
+  font-size: 14px;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* FLOATING CHAT */
+.chat-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366; 
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+.chat-float:hover { transform: scale(1.05); background: #20b858; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .menu { display: none; }
+  .hero { padding-left: 20px; text-align: center; }
+  .about-section, .vision-section, .contact-section, .domains-section, .curriculum-section { padding: 60px 20px; }
+  .check-list { grid-template-columns: 1fr; }
+  .form-panels { flex-direction: column; }
+  .floating-form-block { padding: 30px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="./Images/logo2.png" alt="STEM LABS Logo">
+    </div>
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#offer">What We Offer</a></li>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+    </ul>
+    <button class="login">Login</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Experiential Learning for Future Innovators</h1>
+    <p>Hands-on STEM projects, robotics labs and innovation learning for schools.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="demo">Request a Demo</a> 
+      <a href="#contact" class="chat">Contact Us</a>
+    </div>
+  </div>
+  
+  <div class="custom-shape-divider-bottom-hero">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-content">
+    <div class="about-header">
+      <h2>🚀 About STEM LABS</h2>
+      <h3>Welcome to STEM LABS 💡</h3>
+      <p>Our mission is to empower the next generation of innovators, creators, and problem-solvers by bringing Science, Technology, Engineering, and Mathematics (STEM) to life through hands-on learning.</p>
+      <p>At STEM LABS, we partner with schools to provide structured STEM integration programs that align with modern education standards. Our programs help students move beyond theory and experience real-world applications of technology through practical projects.</p>
+      <p>We conduct interactive workshops, robotics labs, coding sessions, and innovation challenges that inspire curiosity and creativity in students from an early age.</p>
+      <p>STEM LABS is committed to helping schools build a strong foundation in technology and innovation. Through engaging STEM activities and real-world projects, we encourage students to explore, experiment, and develop skills that prepare them for the future. Our goal is to make learning exciting, practical, and meaningful for every student.</p>
+    </div>
+
+    <div class="about-stack">
+      <div class="about-box">
+        <h3>🌟 Why Schools Choose STEM LABS</h3>
+        <ul class="check-list">
+          <li>✔ Hands-on Learning</li>
+          <li>✔ Interactive & Engaging Activities</li>
+          <li>✔ Critical Thinking Development</li>
+          <li>✔ Teacher Training & Support</li>
+          <li>✔ Future-Ready Curriculum</li>
+          <li>✔ Innovation & Creativity</li>
+          <li>✔ Robotics, Coding & Electronics</li>
+          <li>✔ Tech-Driven Environment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-shape-divider-bottom-about">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill-1"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5V0Z" opacity=".5" class="shape-fill-2"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill-3"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="offer-section" id="offer">
+  <h2 class="section-main-title">What We Offer</h2>
+
+  <h3 class="section-sub-title">Our Core Expertise</h3>
+  <div class="card-grid">
+    <div class="image-card">
+      <img src="./Images/Robotics1.jpg" alt="Robotics">
+      <div class="card-info">
+        <h3>Robotics</h3>
+        <p>Building automated, real-world solutions.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Ai & Coding.jpg" alt="AI and Coding">
+      <div class="card-info">
+        <h3>AI & Coding</h3>
+        <p>Programming the minds of tomorrow.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Electronics.jpg" alt="Electronics">
+      <div class="card-info">
+        <h3>Electronics</h3>
+        <p>Mastering circuits and sensors.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Drone 1.jpg" alt="Drone Technology">
+      <div class="card-info">
+        <h3>Drone Tech</h3>
+        <p>Taking innovation to the skies.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/3d.jpg" alt="3D Printing">
+      <div class="card-info">
+        <h3>3D Printing</h3>
+        <p>Turning digital designs into physical reality.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/pcb.png" alt="PCB Design">
+      <div class="card-info">
+        <h3>PCB Design</h3>
+        <p>Designing and fabricating custom circuit boards.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/arrrrr.jpg" alt="AR and VR">
+      <div class="card-info">
+        <h3>AR & VR</h3>
+        <p>Creating immersive virtual and augmented experiences.</p>
+      </div>
+    </div>
+  </div> 
+
+  <h3 class="section-sub-title">Hands-On Workshops We Conduct</h3>
+  <div class="card-grid">
+    <div class="image-card">
+      <img src="./Images/Robotics work.jpg" alt="Robotics Workshop">
+      <div class="card-info">
+        <h3>Robotics</h3>
+        <p>From basic assembly to building path-following and Bluetooth vehicles.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Arduino.jpg" alt="Arduino">
+      <div class="card-info">
+        <h3>Arduino</h3>
+        <p>Mastering microcontroller programming to bring hardware to life.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Sensors1.jpg" alt="Sensors">
+      <div class="card-info">
+        <h3>Sensors</h3>
+        <p>Wiring and coding modules to interact with the physical world.</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/IOT.jpg" alt="IoT">
+      <div class="card-info">
+        <h3>IoT Systems</h3>
+        <p>Creating smart, web-connected automation and WiFi-controlled builds.</p>
+      </div>
+    </div>
+  </div> 
+
+  <div class="custom-shape-divider-bottom-offer">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="vision-section" id="vision">
+  <div class="vision-container">
+    
+    <div class="vision-text-block">
+      <h2>🔬 Our Vision</h2>
+      <p>At STEM LABS, we envision classrooms where students learn through innovation, experimentation, and hands-on STEM activities. Our goal is to support schools in introducing practical learning that prepares students for a technology-driven future.</p>
+      <p>As a growing startup, we work with schools to bring robotics, coding, electronics, and project-based learning into classrooms. We aim to help students build confidence, creativity, and problem-solving skills needed for tomorrow’s world.</p>
+      <p>We are committed to working closely with schools, teachers, and administrators to create meaningful STEM learning experiences. By combining practical projects with modern technology, STEM LABS aims to inspire curiosity and equip students with the skills needed to succeed in an ever-evolving world.</p>
+    </div>
+
+    <div class="benefits-box">
+      <h2>🎓 Student Benefits</h2>
+      <ul class="check-list">
+        <li>• Hands-on Practical Learning</li>
+        <li>• Critical Thinking & Problem-Solving</li>
+        <li>• Robotics & Technology Skills</li>
+        <li>• Innovation & Creativity</li>
+        <li>• Future-Ready Skills</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="custom-shape-divider-bottom-vision">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    
+    <div class="floating-form-block">
+      <h2 id="form-title">Request a Demo Today</h2>
+      
+      <form id="demoForm" action="https://formsubmit.co/stemlabs18@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="form-panels">
+          
+          <div class="form-panel">
+            <h3>Personal Details</h3>
+            <div class="panel-grid">
+              <div class="form-group">
+                <label>Full Name <span>*</span></label>
+                <input type="text" name="name" placeholder="Please Enter Name" required>
+              </div>
+              <div class="form-group">
+                <label>Designation <span>*</span></label>
+                <select name="designation" required>
+                  <option value="" disabled selected>Select Designation</option>
+                  <option value="principal">Principal</option>
+                  <option value="teacher">Teacher / HOD</option>
+                  <option value="chairman">Chairman / Director</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Gmail / Email <span>*</span></label>
+                <input type="email" name="email" placeholder="Enter Email Address" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number <span>*</span></label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-panel">
+            <h3>School Details</h3>
+            <div class="panel-grid">
+              <div class="form-group">
+                <label>School / Organisation <span>*</span></label>
+                <input type="text" name="school" placeholder="Enter School Name" required>
+              </div>
+              <div class="form-group">
+                <label>District <span>*</span></label>
+                <input type="text" name="district" placeholder="Enter District" required>
+              </div>
+              <div class="form-group">
+                <label>State <span>*</span></label>
+                <input type="text" name="state" placeholder="Enter State" required>
+              </div>
+              <div class="form-group">
+                <label>Country <span>*</span></label>
+                <input type="text" name="country" placeholder="Enter Country" value="India" required>
+              </div>
+            </div>
+          </div>
+
+        </div> 
+
+        <div class="submit-btn-wrapper">
+          <button type="submit" class="submit-btn">Request a Demo</button>
+        </div>
+      </form>
+
+      <div id="formSuccess" style="display: none; text-align: center; padding: 40px 20px;">
+        <h3 style="color: #25D366; font-size: 28px; margin-bottom: 15px;">✅ Request Sent Successfully!</h3>
+        <p style="font-size: 18px; color: #555;">Thank you for reaching out. The STEM LABS team will contact you shortly.</p>
+        <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3b5998; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif;">Send Another Request</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="custom-shape-divider-bottom-contact">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="domains-section" id="domains">
+  <h2 class="section-main-title">Explore Our STEM Domains</h2>
+
+  <div class="card-grid">
+    <div class="image-card">
+      <img src="./Images/stem.jpg" alt="STEM" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=STEM'">
+      <div class="card-info">
+        <h3>STEM</h3>
+        <p>Science, Technology, Engineering & Mathematics</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/Robotics.png" alt="Robotics" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Robotics'">
+      <div class="card-info">
+        <h3>Robotics</h3>
+        <p>Build, Program & Control Robots</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/dronuu.jpg" alt="Drone Tech" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Drone+Tech'">
+      <div class="card-info">
+        <h3>Drone Tech</h3>
+        <p>Aerial Technology & UAV Systems</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/electronicsssss.webp" alt="Electronics" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Electronics'">
+      <div class="card-info">
+        <h3>Electronics</h3>
+        <p>Circuit Design & Microcontrollers</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/codinggg.avif" alt="Coding" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Coding'">
+      <div class="card-info">
+        <h3>Coding</h3>
+        <p>Programming & Software Development</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/spaceuuu.jpg" alt="Space Tech" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Space+Tech'">
+      <div class="card-info">
+        <h3>Space Tech</h3>
+        <p>Space Science & Technology</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/ai.jpg" alt="Artificial Intelligence" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=Artificial+Intelligence'">
+      <div class="card-info">
+        <h3>Artificial Intelligence</h3>
+        <p>Machine Learning & Neural Networks</p>
+      </div>
+    </div>
+    <div class="image-card">
+      <img src="./Images/arvr.jpg" alt="AR & VR" onerror="this.src='https://via.placeholder.com/400x200/eee/333?text=AR+%26+VR'">
+      <div class="card-info">
+        <h3>AR & VR</h3>
+        <p>Augmented & Virtual Reality</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-shape-divider-bottom-domains">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="curriculum-section" id="curriculum">
+  <h2 class="section-main-title">STEM LABS Curriculum</h2>
+  <p class="curriculum-desc">Discover our comprehensive, hands-on approach to bringing Science, Technology, Engineering, and Mathematics to life inside the classroom.</p>
+
+  <a href="./STEM_Cirriculum.pdf" download class="main-download-btn">
+    <i class="fas fa-file-pdf"></i> Download Overall Curriculum
+  </a>
+
+  <h3 class="section-sub-title">Grade-Specific Curriculums</h3>
+  
+  <div class="grades-grid">
+    <div class="grade-card">
+      <h4>Class 1</h4>
+      <a href="./Senior_Builders_1&2.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 2</h4>
+      <a href="./Senior_Builders_1&2.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 3</h4>
+      <a href="./Junior_Builders_3-5.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 4</h4>
+      <a href="./Junior_Builders_3-5.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 5</h4>
+      <a href="./Junior_Builders_3-5.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 6</h4>
+      <a href="./Master_Engineering_8_9.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 7</h4>
+      <a href="./Master_Engineering_8_9.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 8</h4>
+      <a href="./Master_Engineering_8_9.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 9</h4>
+      <a href="./Master_Engineering_8_9.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+    <div class="grade-card">
+      <h4>Class 10</h4>
+      <a href="./Master_Engineering_8_9.pdf" download class="grade-download"><i class="fas fa-download"></i> Download</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-section">
+  <h2>Get In Touch</h2>
+  <div class="social-icons-wrapper">
+    
+    <a href="tel:7780440734" class="social-icon" title="Call Us">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    
+    <a href="https://wa.me/917780440734" class="social-icon" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <a href="mailto:chanduvangara2002@gmail.com" class="social-icon" title="Email Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/lazy._learning?igsh=MTFsMTM3ZzJxdzY4NA==" class="social-icon" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 STEM LABS. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById("demoForm");
+  const successMessage = document.getElementById("formSuccess");
+  const formTitle = document.getElementById("form-title");
+  const submitBtn = form.querySelector(".submit-btn");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    submitBtn.innerText = "Sending..."; 
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.style.display = "none";
+        formTitle.style.display = "none";
+        successMessage.style.display = "block";
+      } else {
+        alert("Oops! There was a problem submitting your form.");
+        submitBtn.innerText = "Request a Demo";
+      }
+    })
+    .catch(error => {
+      alert("Oops! There was a problem submitting your form.");
+      submitBtn.innerText = "Request a Demo";
+    });
+  });
+</script>
+
+</body>
+</html>
