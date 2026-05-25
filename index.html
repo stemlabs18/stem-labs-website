@@ -1171,127 +1171,83 @@ h1, h2, h3 {
 
   </div>
 </section>
-<!-- SCHOOLS COLLABORATION SECTION -->
+<!-- SCHOOL COLLABORATION SECTION -->
 
 <style>
 
-.schools-section{
-  padding:100px 40px;
+.school-mini-section{
+  padding:70px 40px;
   background:#ffffff;
-  position:relative;
-  overflow:hidden;
 }
 
-.schools-section::before{
-  content:'';
-  position:absolute;
-  width:300px;
-  height:300px;
-  background:#ff8c2a20;
-  border-radius:50%;
-  top:-100px;
-  left:-100px;
-}
-
-.schools-section::after{
-  content:'';
-  position:absolute;
-  width:250px;
-  height:250px;
-  background:#3b599820;
-  border-radius:50%;
-  bottom:-100px;
-  right:-100px;
-}
-
-.schools-section .section-main-title{
+.school-mini-section .section-main-title{
   color:#3b5998;
   text-align:center;
-  margin-bottom:60px;
-  font-size:45px;
+  margin-bottom:40px;
+  font-size:38px;
 }
 
-.school-card{
-  max-width:600px;
-  margin:auto;
-  background:white;
-  border-radius:25px;
-  padding:50px;
+.school-mini-grid{
   display:flex;
-  flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+}
+
+.school-mini-card{
+  width:180px;
+  background:#ffffff;
+  border-radius:16px;
+  padding:20px 15px;
   text-align:center;
-  gap:25px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.1);
-  border:2px solid #f1f1f1;
+  box-shadow:0 6px 16px rgba(0,0,0,0.08);
   transition:0.3s ease;
-  position:relative;
-  z-index:2;
+  border:2px solid #f1f1f1;
 }
 
-.school-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 45px rgba(0,0,0,0.15);
+.school-mini-card:hover{
+  transform:translateY(-5px);
+  border-color:#ff8c2a;
 }
 
-.school-logo img{
-  width:220px;
-  height:220px;
+.school-mini-card img{
+  width:75px;
+  height:75px;
   object-fit:contain;
-  background:#fff;
-  padding:20px;
-  border-radius:25px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  margin-bottom:12px;
 }
 
-.school-content h3{
-  font-size:34px;
+.school-mini-card h3{
   color:#3b5998;
+  font-size:16px;
   font-family:'Montserrat', sans-serif;
-  letter-spacing:1px;
+  line-height:1.4;
 }
 
 @media(max-width:768px){
 
-  .schools-section{
-    padding:70px 20px;
+  .school-mini-section{
+    padding:50px 20px;
   }
 
-  .schools-section .section-main-title{
-    font-size:34px;
-  }
-
-  .school-card{
-    padding:35px 20px;
-  }
-
-  .school-logo img{
-    width:160px;
-    height:160px;
-  }
-
-  .school-content h3{
-    font-size:26px;
+  .school-mini-section .section-main-title{
+    font-size:28px;
   }
 
 }
 
 </style>
 
-<section class="schools-section" id="schools">
+<section class="school-mini-section">
 
   <h2 class="section-main-title">
     Our Trusted School Collaborations
   </h2>
 
-  <div class="school-card">
+  <div class="school-mini-grid">
 
-    <div class="school-logo">
-      <img src="./Images/STM.png" alt="STM School Logo">
-    </div>
+    <div class="school-mini-card">
+      <img src="./Images/STM.png" alt="STM Logo">
 
-    <div class="school-content">
       <h3>ST. MARY'S SCHOOL</h3>
     </div>
 
