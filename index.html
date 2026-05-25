@@ -1212,19 +1212,22 @@ h1, h2, h3 {
 }
 
 .school-card{
-  max-width:1000px;
+  max-width:600px;
   margin:auto;
   background:white;
   border-radius:25px;
   padding:50px;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:40px;
+  justify-content:center;
+  text-align:center;
+  gap:25px;
   box-shadow:0 15px 40px rgba(0,0,0,0.1);
-  position:relative;
-  z-index:2;
   border:2px solid #f1f1f1;
   transition:0.3s ease;
+  position:relative;
+  z-index:2;
 }
 
 .school-card:hover{
@@ -1233,26 +1236,20 @@ h1, h2, h3 {
 }
 
 .school-logo img{
-  width:180px;
-  height:180px;
+  width:220px;
+  height:220px;
   object-fit:contain;
   background:#fff;
   padding:20px;
-  border-radius:20px;
+  border-radius:25px;
   box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
 .school-content h3{
-  font-size:36px;
+  font-size:34px;
   color:#3b5998;
-  margin-bottom:15px;
   font-family:'Montserrat', sans-serif;
-}
-
-.school-content p{
-  font-size:18px;
-  line-height:1.8;
-  color:#555;
+  letter-spacing:1px;
 }
 
 @media(max-width:768px){
@@ -1261,23 +1258,21 @@ h1, h2, h3 {
     padding:70px 20px;
   }
 
+  .schools-section .section-main-title{
+    font-size:34px;
+  }
+
   .school-card{
-    flex-direction:column;
-    text-align:center;
-    padding:30px 20px;
+    padding:35px 20px;
   }
 
   .school-logo img{
-    width:140px;
-    height:140px;
+    width:160px;
+    height:160px;
   }
 
   .school-content h3{
-    font-size:28px;
-  }
-
-  .school-content p{
-    font-size:16px;
+    font-size:26px;
   }
 
 }
@@ -1293,17 +1288,11 @@ h1, h2, h3 {
   <div class="school-card">
 
     <div class="school-logo">
-      <img src="./Images/stm.png" alt="STM School Logo">
+      <img src="./Images/STM.png" alt="STM School Logo">
     </div>
 
     <div class="school-content">
       <h3>ST. MARY'S SCHOOL</h3>
-
-      <p>
-        Collaborating with STEM LABS to empower students through
-        Robotics, AI, Coding, Electronics, Innovation and
-        Hands-on STEM Learning.
-      </p>
     </div>
 
   </div>
