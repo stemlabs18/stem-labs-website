@@ -843,25 +843,303 @@ h1, h2, h3 {
       <li><a href="#domains">Domains</a></li>
       <li><a href="#curriculum">Curriculum</a></li>
     </ul>
-    <button class="login">Login</button>
+   
   </div>
 </header>
 
+<!-- ===================================================
+   HERO SECTION
+=================================================== -->
+
+<style>
+
+/* HERO SECTION */
+
+.hero {
+
+  height: 80vh;
+
+  background-color: #3b5998;
+
+  display: flex;
+
+  align-items: center;
+
+  padding-left: 50px;
+
+  color: white;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* LEFT CONTENT */
+
+.hero-content {
+
+  max-width: 650px;
+
+  z-index: 2;
+}
+
+.hero h1 {
+
+  font-size: 60px;
+
+  margin-bottom: 20px;
+
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+
+  color: white;
+}
+
+.hero p {
+
+  font-size: 19px;
+
+  margin-bottom: 30px;
+
+  color: #e0e0e0;
+
+  line-height: 1.6;
+
+  max-width: 650px;
+}
+
+/* BUTTONS */
+
+.hero-buttons a {
+
+  text-decoration: none;
+
+  padding: 12px 25px;
+
+  border-radius: 6px;
+
+  margin-right: 15px;
+
+  font-weight: bold;
+
+  font-family: 'Montserrat', sans-serif;
+
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+
+  display: inline-block;
+}
+
+.hero-buttons a:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.demo {
+
+  background: #4ecdc4;
+
+  color: white;
+}
+
+.chat {
+
+  background: #ff8c2a;
+
+  color: white;
+}
+
+/* RIGHT SIDE IMAGE */
+
+.hero-image {
+
+  position: absolute;
+
+  right: 40px;
+
+  bottom: 30px;
+
+  z-index: 1;
+}
+
+.hero-image img {
+
+  width: 500px;
+
+  animation: floatImage 4s ease-in-out infinite;
+
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25));
+}
+
+@keyframes floatImage {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* BOTTOM WAVE */
+
+.custom-shape-divider-bottom-hero {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    line-height: 0;
+
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-hero svg {
+
+    position: relative;
+
+    display: block;
+
+    width: calc(100% + 1.3px);
+
+    height: 90px;
+}
+
+.custom-shape-divider-bottom-hero .shape-fill {
+
+    fill: #ffffff;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .hero{
+
+    height:auto;
+
+    padding:120px 20px 140px;
+
+    text-align:center;
+
+    justify-content:center;
+  }
+
+  .hero-content{
+
+    max-width:100%;
+  }
+
+  .hero h1{
+
+    font-size:42px;
+  }
+
+  .hero p{
+
+    font-size:17px;
+  }
+
+  .hero-image{
+
+    position:relative;
+
+    right:auto;
+
+    bottom:auto;
+
+    margin-top:40px;
+
+    text-align:center;
+  }
+
+  .hero-image img{
+
+    width:280px;
+  }
+
+}
+
+</style>
+
+<!-- HERO HTML -->
+
 <section class="hero">
+
+  <!-- LEFT SIDE -->
+
   <div class="hero-content">
-    <h1>Experiential Learning for Future Innovators</h1>
-    <p>Hands-on STEM projects, robotics labs and innovation learning for schools.</p>
+
+    <h1>
+      Experiential Learning for Future Innovators
+    </h1>
+
+    <p>
+      Hands-on STEM projects, robotics labs and innovation learning for schools.
+    </p>
+
     <div class="hero-buttons">
-      <a href="#contact" class="demo">Request a Demo</a> 
-      <a href="#footer-contact" class="chat">Contact Us</a>
+
+      <a href="#contact" class="demo">
+        Request a Demo
+      </a>
+
+      <a href="#footer-contact" class="chat">
+        Contact Us
+      </a>
+
     </div>
+
   </div>
-  
+
+  <!-- RIGHT SIDE IMAGE -->
+
+  <div class="hero-image">
+
+    <img src="./Images/stml.png" alt="STEM LABS">
+
+  </div>
+
+  <!-- BOTTOM WAVE -->
+
   <div class="custom-shape-divider-bottom-hero">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+
+    <svg data-name="Layer 1"
+         xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 1200 120"
+         preserveAspectRatio="none">
+
+      <path d="M321.39,56.44c58-10.79,
+               114.16-30.13,172-41.86,
+               82.39-16.72,168.19-17.73,
+               250.45-.39C823.78,31,
+               906.67,72,985.66,92.83,
+               c70.05,18.48,146.53,
+               26.09,214.34,3V0H0V27.35
+               A600.21,600.21,0,0,0,
+               321.39,56.44Z"
+            class="shape-fill">
+
+      </path>
+
     </svg>
+
   </div>
+
 </section>
 
 <section class="about-section" id="about">
