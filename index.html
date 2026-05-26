@@ -79,14 +79,104 @@ h1, h2, h3 {
 /* ---------------------------------------------------
    1. HERO SECTION 
 --------------------------------------------------- */
+/* ---------------------------------------------------
+   HERO SECTION
+--------------------------------------------------- */
+
 .hero {
+
   height: 80vh;
-  background-color: #3b5998; 
+
+  background: linear-gradient(
+    135deg,
+    #dff6ff,
+    #b8e8fc,
+    #8fd3f4
+  );
+
   display: flex;
+
   align-items: center;
+
   padding-left: 50px;
-  color: white;
+
+  color: #3b5998;
+
   position: relative;
+
+  overflow: hidden;
+}
+
+.hero-content {
+
+  max-width: 650px;
+
+  z-index: 2;
+}
+
+.hero h1 {
+
+  font-size: 60px;
+
+  margin-bottom: 20px;
+
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+
+  color: #3b5998;
+}
+
+.hero p {
+
+  font-size: 19px;
+
+  margin-bottom: 30px;
+
+  color: #4b5563;
+
+  line-height: 1.6;
+}
+
+.hero-buttons a {
+
+  text-decoration: none;
+
+  padding: 12px 25px;
+
+  border-radius: 6px;
+
+  margin-right: 15px;
+
+  font-weight: bold;
+
+  font-family: 'Montserrat', sans-serif;
+
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+
+  display: inline-block;
+}
+
+.hero-buttons a:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.demo {
+
+  background: #4ecdc4;
+
+  color: white;
+}
+
+.chat {
+
+  background: #ff8c2a;
+
+  color: white;
 }
 
 .hero-content { 
