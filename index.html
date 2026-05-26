@@ -80,6 +80,7 @@ h1, h2, h3 {
    1. HERO SECTION 
 --------------------------------------------------- */
 /* ---------------------------------------------------
+ /* ---------------------------------------------------
    HERO SECTION
 --------------------------------------------------- */
 
@@ -87,12 +88,7 @@ h1, h2, h3 {
 
   height: 80vh;
 
-  background: linear-gradient(
-    135deg,
-    #dff6ff,
-    #b8e8fc,
-    #8fd3f4
-  );
+  background-color: #3b5998;
 
   display: flex;
 
@@ -100,7 +96,7 @@ h1, h2, h3 {
 
   padding-left: 50px;
 
-  color: #3b5998;
+  color: white;
 
   position: relative;
 
@@ -124,25 +120,20 @@ h1, h2, h3 {
 
   letter-spacing: -1px;
 
-  color: #3b5998;
+  color: white;
 }
 
 .hero p {
 
-  font-size: 22px;
+  font-size: 19px;
 
   margin-bottom: 30px;
 
-  color: #1e293b;
-
-  line-height: 1.7;
-
-  font-weight: 600;
-
-  max-width: 650px;
-}
+  color: #e0e0e0;
 
   line-height: 1.6;
+
+  max-width: 650px;
 }
 
 .hero-buttons a {
@@ -169,7 +160,7 @@ h1, h2, h3 {
 
   transform: translateY(-3px);
 
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .demo {
@@ -186,60 +177,38 @@ h1, h2, h3 {
   color: white;
 }
 
-.hero-content { 
-  max-width: 650px; 
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
-  line-height: 1.1;
-  letter-spacing: -1px;
-}
-
-.hero p {
-  font-size: 19px;
-  margin-bottom: 30px;
-  color: #e0e0e0;
-  line-height: 1.6;
-}
-
-.hero-buttons a {
-  text-decoration: none;
-  padding: 12px 25px;
-  border-radius: 6px;
-  margin-right: 15px;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: inline-block;
-}
-
-.hero-buttons a:hover { 
-  transform: translateY(-3px); 
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.demo { background: #4ecdc4; color: white; }
-.chat { background: #ff8c2a; color: white; }
-
 .custom-shape-divider-bottom-hero {
+
     position: absolute;
+
     bottom: 0;
+
     left: 0;
+
     width: 100%;
+
     overflow: hidden;
+
     line-height: 0;
+
     transform: rotate(180deg);
 }
+
 .custom-shape-divider-bottom-hero svg {
+
     position: relative;
+
     display: block;
+
     width: calc(100% + 1.3px);
+
     height: 90px;
 }
-.custom-shape-divider-bottom-hero .shape-fill { fill: #ffffff; }
+
+.custom-shape-divider-bottom-hero .shape-fill {
+
+    fill: #ffffff;
+}
 
 /* ---------------------------------------------------
    2. ABOUT SECTION 
