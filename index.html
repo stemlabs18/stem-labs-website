@@ -1310,360 +1310,101 @@ h1, h2, h3 {
   <!-- ===================================================
    STEM LAB FLOW SECTION
 =================================================== -->
+<!-- STEP 1 -->
 
-<style>
+<div class="flow-step">
 
-.lab-flow-section{
-  background:#f8fbff;
-  padding:90px 40px 110px;
-  position:relative;
-}
+  <div class="flow-circle circle1">
+    <h2>10</h2>
+    <span>Mins</span>
+  </div>
 
-.lab-flow-title{
-  text-align:center;
-  font-size:42px;
-  color:#3b5998;
-  margin-bottom:20px;
-  font-family:'Montserrat',sans-serif;
-}
+  <div class="flow-arrow">
+    <span></span>
+  </div>
 
-.lab-flow-subtitle{
-  text-align:center;
-  max-width:850px;
-  margin:0 auto 80px;
-  color:#666;
-  font-size:18px;
-  line-height:1.7;
-}
+  <h3>Concept Learning</h3>
 
-.lab-flow-container{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:25px;
-  flex-wrap:wrap;
-}
+  <div class="flow-card">
 
-.flow-step{
-  flex:1;
-  min-width:220px;
-  position:relative;
-  text-align:center;
-}
+    <img src="./Images/concept1.png" alt="Concept Learning">
 
-/* CIRCLE */
-
-.flow-circle{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 25px;
-  color:white;
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-.flow-circle h2{
-  font-size:46px;
-  line-height:1;
-  margin-bottom:6px;
-  color:white;
-}
-
-.flow-circle span{
-  font-size:20px;
-  font-weight:600;
-}
-
-.circle1{
-  background:#ff8c2a;
-}
-
-.circle2{
-  background:#4ecdc4;
-}
-
-.circle3{
-  background:#43a047;
-}
-
-.circle4{
-  background:#3b5998;
-}
-
-/* TITLES */
-
-.flow-step h3{
-  font-size:30px;
-  color:#111;
-  margin-bottom:20px;
-  font-family:'Montserrat',sans-serif;
-  line-height:1.2;
-}
-
-/* IMAGE CARDS */
-
-.flow-card{
-  position:relative;
-  width:260px;
-  height:170px;
-  margin:0 auto 25px;
-}
-
-.flow-card img{
-  position:absolute;
-  border-radius:16px;
-  object-fit:cover;
-  box-shadow:0 8px 18px rgba(0,0,0,0.15);
-  border:4px solid white;
-}
-
-.flow-card img:first-child{
-  width:170px;
-  height:120px;
-  top:0;
-  left:0;
-  z-index:1;
-}
-
-.flow-card img:last-child{
-  width:170px;
-  height:120px;
-  bottom:0;
-  right:0;
-  z-index:2;
-}
-
-/* DESCRIPTION */
-
-.flow-step p{
-  font-size:17px;
-  line-height:1.7;
-  color:#555;
-  max-width:290px;
-  margin:auto;
-}
-
-.flow-step p strong{
-  color:#ff8c2a;
-}
-
-/* PREMIUM DOTTED ARROWS */
-
-.flow-arrow{
-  position:absolute;
-  top:58px;
-  right:-95px;
-  width:90px;
-  height:2px;
-  z-index:5;
-}
-
-.flow-arrow span{
-  display:block;
-  width:100%;
-  height:2px;
-  border-top:3px dashed #cfcfcf;
-  position:relative;
-}
-
-.flow-arrow span::after{
-  content:"";
-  position:absolute;
-  right:-2px;
-  top:-7px;
-  border-top:8px solid transparent;
-  border-bottom:8px solid transparent;
-  border-left:14px solid #cfcfcf;
-}
-
-/* MOBILE */
-
-@media(max-width:1200px){
-
-  .lab-flow-container{
-    justify-content:center;
-  }
-
-  .flow-arrow{
-    display:none;
-  }
-
-}
-
-@media(max-width:768px){
-
-  .lab-flow-section{
-    padding:70px 20px;
-  }
-
-  .lab-flow-title{
-    font-size:32px;
-  }
-
-  .lab-flow-subtitle{
-    font-size:16px;
-    margin-bottom:60px;
-  }
-
-  .flow-step{
-    margin-bottom:60px;
-  }
-
-  .flow-step h3{
-    font-size:26px;
-  }
-
-  .flow-card{
-    width:230px;
-    height:160px;
-  }
-
-  .flow-card img:first-child,
-  .flow-card img:last-child{
-    width:150px;
-    height:110px;
-  }
-
-}
-
-</style>
-
-<section class="lab-flow-section">
-
-  <h2 class="lab-flow-title">
-    STEM LABS Learning Flow
-  </h2>
-
-  <p class="lab-flow-subtitle">
-    Our structured hands-on learning process helps students understand concepts,
-    build projects, develop confidence, and continue innovation beyond the classroom.
-  </p>
-
-  <div class="lab-flow-container">
-
-    <!-- STEP 1 -->
-
-    <div class="flow-step">
-
-      <div class="flow-circle circle1">
-        <h2>10</h2>
-        <span>Mins</span>
-      </div>
-
-      <div class="flow-arrow">
-        <span></span>
-      </div>
-
-      <h3>Concept Learning</h3>
-
-      <div class="flow-card">
-
-        <img src="./Images/concept1.jpg" alt="Concept Learning">
-
-        <img src="./Images/concept2.jpg" alt="Concept Learning">
-
-      </div>
-
-      <p>
-        <strong>Interactive visual explanations</strong> and STEM concept discussions
-        help students understand the fundamentals before practical implementation.
-      </p>
-
-    </div>
-
-    <!-- STEP 2 -->
-
-    <div class="flow-step">
-
-      <div class="flow-circle circle2">
-        <h2>25</h2>
-        <span>Mins</span>
-      </div>
-
-      <div class="flow-arrow">
-        <span></span>
-      </div>
-
-      <h3>Hands-On Activity</h3>
-
-      <div class="flow-card">
-
-        <img src="./Images/activity1.jpg" alt="Hands-On Activity">
-
-        <img src="./Images/activity2.jpg" alt="Hands-On Activity">
-
-      </div>
-
-      <p>
-        <strong>Students build and experiment</strong> using robotics kits,
-        electronics, coding platforms, and real-world STEM projects.
-      </p>
-
-    </div>
-
-    <!-- STEP 3 -->
-
-    <div class="flow-step">
-
-      <div class="flow-circle circle3">
-        <h2>10</h2>
-        <span>Mins</span>
-      </div>
-
-      <div class="flow-arrow">
-        <span></span>
-      </div>
-
-      <h3>Innovation & Presentation</h3>
-
-      <div class="flow-card">
-
-        <img src="./Images/presentation1.jpg" alt="Presentation">
-
-        <img src="./Images/presentation2.jpg" alt="Presentation">
-
-      </div>
-
-      <p>
-        <strong>Students explain their projects</strong>, improve problem-solving,
-        teamwork, communication, and creative thinking skills.
-      </p>
-
-    </div>
-
-    <!-- STEP 4 -->
-
-    <div class="flow-step">
-
-      <div class="flow-circle circle4">
-        <h2>∞</h2>
-        <span>Learning</span>
-      </div>
-
-      <h3>Beyond Classroom</h3>
-
-      <div class="flow-card">
-
-        <img src="./Images/home1.jpg" alt="Beyond Classroom">
-
-        <img src="./Images/home2.jpg" alt="Beyond Classroom">
-
-      </div>
-
-      <p>
-        <strong>Students continue exploring at home</strong> through assignments,
-        innovation challenges, and future-ready STEM activities.
-      </p>
-
-    </div>
+    <img src="./Images/concept2.png" alt="Concept Learning">
 
   </div>
 
-</section>
+</div>
+
+<!-- STEP 2 -->
+
+<div class="flow-step">
+
+  <div class="flow-circle circle2">
+    <h2>25</h2>
+    <span>Mins</span>
+  </div>
+
+  <div class="flow-arrow">
+    <span></span>
+  </div>
+
+  <h3>Hands-On Activity</h3>
+
+  <div class="flow-card">
+
+    <img src="./Images/activity1.png" alt="Hands-On Activity">
+
+    <img src="./Images/activity2.png" alt="Hands-On Activity">
+
+  </div>
+
+</div>
+
+<!-- STEP 3 -->
+
+<div class="flow-step">
+
+  <div class="flow-circle circle3">
+    <h2>10</h2>
+    <span>Mins</span>
+  </div>
+
+  <div class="flow-arrow">
+    <span></span>
+  </div>
+
+  <h3>Innovation & Presentation</h3>
+
+  <div class="flow-card">
+
+    <img src="./Images/presentation1.png" alt="Presentation">
+
+    <img src="./Images/presentation2.png" alt="Presentation">
+
+  </div>
+
+</div>
+
+<!-- STEP 4 -->
+
+<div class="flow-step">
+
+  <div class="flow-circle circle4">
+    <h2>∞</h2>
+    <span>Learning</span>
+  </div>
+
+  <h3>Beyond Classroom</h3>
+
+  <div class="flow-card">
+
+    <img src="./Images/home1.png" alt="Beyond Classroom">
+
+    <img src="./Images/home2.png" alt="Beyond Classroom">
+
+  </div>
+
+</div>
 
 <!-- PREMIUM CONTACT SECTION -->
 
