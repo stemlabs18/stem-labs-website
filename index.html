@@ -1310,278 +1310,294 @@ h1, h2, h3 {
   <!-- ===================================================
    STEM LAB FLOW SECTION
 =================================================== -->
-<!-- STEP 1 -->
-
-<div class="flow-step">
-
-  <div class="flow-circle circle1">
-    <h2>10</h2>
-    <span>Mins</span>
-  </div>
-
-  <div class="flow-arrow">
-    <span></span>
-  </div>
-
-  <h3>Concept Learning</h3>
-
-  <div class="flow-card">
-
-    <img src="./Images/concept1.png" alt="Concept Learning">
-
-    <img src="./Images/concept2.png" alt="Concept Learning">
-
-  </div>
-
-</div>
-
-<!-- STEP 2 -->
-
-<div class="flow-step">
-
-  <div class="flow-circle circle2">
-    <h2>25</h2>
-    <span>Mins</span>
-  </div>
-
-  <div class="flow-arrow">
-    <span></span>
-  </div>
-
-  <h3>Hands-On Activity</h3>
-
-  <div class="flow-card">
-
-    <img src="./Images/activity1.png" alt="Hands-On Activity">
-
-    <img src="./Images/activity2.png" alt="Hands-On Activity">
-
-  </div>
-
-</div>
-
-<!-- STEP 3 -->
-
-<div class="flow-step">
-
-  <div class="flow-circle circle3">
-    <h2>10</h2>
-    <span>Mins</span>
-  </div>
-
-  <div class="flow-arrow">
-    <span></span>
-  </div>
-
-  <h3>Innovation & Presentation</h3>
-
-  <div class="flow-card">
-
-    <img src="./Images/presentation1.png" alt="Presentation">
-
-    <img src="./Images/presentation2.png" alt="Presentation">
-
-  </div>
-
-</div>
-
-<!-- STEP 4 -->
-
-<div class="flow-step">
-
-  <div class="flow-circle circle4">
-    <h2>∞</h2>
-    <span>Learning</span>
-  </div>
-
-  <h3>Beyond Classroom</h3>
-
-  <div class="flow-card">
-
-    <img src="./Images/home1.png" alt="Beyond Classroom">
-
-    <img src="./Images/home2.png" alt="Beyond Classroom">
-
-  </div>
-
-</div>
-
-<!-- PREMIUM CONTACT SECTION -->
+<!-- ===================================================
+   STEM LAB FLOW SECTION
+=================================================== -->
 
 <style>
 
-.contact-section{
-  background:linear-gradient(135deg,#dff6ff,#b8e8fc,#d9f4ff);
-  padding:80px 40px 120px;
+.lab-flow-section{
+  background:#f8fbff;
+  padding:90px 40px 110px;
   position:relative;
 }
 
-.contact-container{
-  max-width:1200px;
-  margin:auto;
-}
-
-.floating-form-block{
-
-  background:rgba(255,255,255,0.35);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-
-  border-radius:30px;
-
-  padding:50px;
-
-  border:1px solid rgba(255,255,255,0.3);
-
-  box-shadow:0 10px 40px rgba(0,0,0,0.1);
-}
-
-.floating-form-block h2{
+.lab-flow-title{
   text-align:center;
+  font-size:42px;
   color:#3b5998;
-  font-size:48px;
-  margin-bottom:50px;
+  margin-bottom:20px;
   font-family:'Montserrat',sans-serif;
 }
 
-.form-panels{
+.lab-flow-subtitle{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 80px;
+  color:#666;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.lab-flow-container{
   display:flex;
-  gap:35px;
+  justify-content:space-between;
   align-items:flex-start;
-  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
 }
 
-.form-panel{
-
+.flow-step{
   flex:1;
-
-  background:rgba(255,255,255,0.5);
-
-  padding:35px;
-
-  border-radius:24px;
-
-  backdrop-filter:blur(8px);
-
-  border:1px solid rgba(255,255,255,0.4);
-
-  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  min-width:220px;
+  position:relative;
+  text-align:center;
 }
 
-.form-panel h3{
-  color:#3b5998;
-  font-size:28px;
-  margin-bottom:25px;
-  border-bottom:2px solid #ff8c2a;
-  display:inline-block;
-  padding-bottom:8px;
-}
+/* CIRCLE */
 
-.panel-grid{
+.flow-circle{
+  width:120px;
+  height:120px;
+  border-radius:50%;
   display:flex;
   flex-direction:column;
-  gap:22px;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  color:white;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
-.form-group{
-  display:flex;
-  flex-direction:column;
+.flow-circle h2{
+  font-size:46px;
+  line-height:1;
+  margin-bottom:6px;
+  color:white;
 }
 
-.form-group label{
-  color:#333;
-  margin-bottom:10px;
-  font-size:16px;
+.flow-circle span{
+  font-size:20px;
   font-weight:600;
 }
 
-.form-group span{
-  color:red;
-}
+.circle1{ background:#ff8c2a; }
+.circle2{ background:#4ecdc4; }
+.circle3{ background:#43a047; }
+.circle4{ background:#3b5998; }
 
-.form-group input,
-.form-group select{
+/* TITLE */
 
-  width:100%;
-
-  padding:16px;
-
-  border:none;
-
-  border-radius:12px;
-
-  background:white;
-
-  font-size:16px;
-
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-.form-group input:focus,
-.form-group select:focus{
-
-  outline:none;
-
-  box-shadow:0 0 10px rgba(255,140,42,0.4);
-}
-
-.submit-btn-wrapper{
-  display:flex;
-  justify-content:center;
-  margin-top:45px;
-}
-
-.submit-btn{
-
-  background:linear-gradient(135deg,#ff8c2a,#ffb347);
-
-  border:none;
-
-  padding:18px 70px;
-
-  border-radius:60px;
-
-  color:white;
-
-  font-size:22px;
-
-  font-weight:bold;
-
-  cursor:pointer;
-
+.flow-step h3{
+  font-size:28px;
+  color:#111;
+  margin-bottom:20px;
   font-family:'Montserrat',sans-serif;
-
-  transition:0.3s ease;
-
-  box-shadow:0 10px 25px rgba(255,140,42,0.35);
+  line-height:1.2;
 }
 
-.submit-btn:hover{
-  transform:translateY(-5px);
+/* IMAGE STACK */
+
+.flow-card{
+  position:relative;
+  width:260px;
+  height:170px;
+  margin:0 auto 25px;
 }
 
-@media(max-width:768px){
+.flow-card img{
+  position:absolute !important;
+  width:170px !important;
+  height:120px !important;
+  object-fit:cover !important;
+  border-radius:16px !important;
+  box-shadow:0 8px 18px rgba(0,0,0,0.15);
+  border:4px solid white;
+}
 
-  .contact-section{
-    padding:60px 20px 100px;
+.flow-card img:first-child{
+  top:0;
+  left:0;
+  z-index:1;
+}
+
+.flow-card img:last-child{
+  bottom:0;
+  right:0;
+  z-index:2;
+}
+
+/* TEXT */
+
+.flow-step p{
+  font-size:16px;
+  line-height:1.7;
+  color:#555;
+  max-width:290px;
+  margin:auto;
+}
+
+.flow-step p strong{
+  color:#ff8c2a;
+}
+
+/* DOTTED ARROW */
+
+.flow-arrow{
+  position:absolute;
+  top:58px;
+  right:-95px;
+  width:90px;
+  height:2px;
+  z-index:5;
+}
+
+.flow-arrow span{
+  display:block;
+  width:100%;
+  height:2px;
+  border-top:3px dashed #cfcfcf;
+  position:relative;
+}
+
+.flow-arrow span::after{
+  content:"";
+  position:absolute;
+  right:-2px;
+  top:-7px;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+  border-left:14px solid #cfcfcf;
+}
+
+/* MOBILE */
+
+@media(max-width:1200px){
+
+  .lab-flow-container{
+    justify-content:center;
   }
 
-  .floating-form-block{
-    padding:30px 20px;
-  }
-
-  .floating-form-block h2{
-    font-size:34px;
-  }
-
-  .form-panels{
-    flex-direction:column;
+  .flow-arrow{
+    display:none;
   }
 
 }
 
 </style>
+
+<section class="lab-flow-section">
+
+  <h2 class="lab-flow-title">
+    STEM LABS Learning Flow
+  </h2>
+
+  <p class="lab-flow-subtitle">
+    Our structured hands-on learning process helps students understand concepts,
+    build projects, develop confidence, and continue innovation beyond the classroom.
+  </p>
+
+  <div class="lab-flow-container">
+
+    <!-- STEP 1 -->
+
+    <div class="flow-step">
+
+      <div class="flow-circle circle1">
+        <h2>10</h2>
+        <span>Mins</span>
+      </div>
+
+      <div class="flow-arrow">
+        <span></span>
+      </div>
+
+      <h3>Concept Learning</h3>
+
+      <div class="flow-card">
+
+        <img src="./Images/concept1.png">
+
+        <img src="./Images/concept2.png">
+
+      </div>
+
+    </div>
+
+    <!-- STEP 2 -->
+
+    <div class="flow-step">
+
+      <div class="flow-circle circle2">
+        <h2>25</h2>
+        <span>Mins</span>
+      </div>
+
+      <div class="flow-arrow">
+        <span></span>
+      </div>
+
+      <h3>Hands-On Activity</h3>
+
+      <div class="flow-card">
+
+        <img src="./Images/activity1.png">
+
+        <img src="./Images/activity2.png">
+
+      </div>
+
+    </div>
+
+    <!-- STEP 3 -->
+
+    <div class="flow-step">
+
+      <div class="flow-circle circle3">
+        <h2>10</h2>
+        <span>Mins</span>
+      </div>
+
+      <div class="flow-arrow">
+        <span></span>
+      </div>
+
+      <h3>Innovation & Presentation</h3>
+
+      <div class="flow-card">
+
+        <img src="./Images/presentation1.png">
+
+        <img src="./Images/presentation2.png">
+
+      </div>
+
+    </div>
+
+    <!-- STEP 4 -->
+
+    <div class="flow-step">
+
+      <div class="flow-circle circle4">
+        <h2>∞</h2>
+        <span>Learning</span>
+      </div>
+
+      <h3>Beyond Classroom</h3>
+
+      <div class="flow-card">
+
+        <img src="./Images/home1.png">
+
+        <img src="./Images/home2.png">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 <!-- PREMIUM COMPACT CONTACT SECTION -->
 
