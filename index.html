@@ -533,6 +533,123 @@ section { position: relative; }
   display: block;
 }
 
+/* ── IMAGE CARDS for Offer & Domains ── */
+.offer-card-img {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative;
+}
+
+.offer-card-img::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.offer-card-img:hover::before { transform: scaleX(1); }
+
+.offer-card-img:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-5px);
+}
+
+.offer-card-img img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+.offer-card-img .card-body {
+  padding: 18px 20px 20px;
+}
+
+.offer-card-img .offer-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+
+.offer-card-img h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.offer-card-img p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.55;
+}
+
+/* Workshops sub-grid label */
+.offer-sublabel {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 48px 0 20px;
+}
+
+/* Domain image cards */
+.domain-card-img {
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cream);
+  transition: all 0.25s;
+  cursor: default;
+}
+
+.domain-card-img:hover {
+  border-color: var(--orange);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(242,100,25,0.12);
+}
+
+.domain-card-img img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.domain-card-img .domain-info {
+  padding: 16px 18px 18px;
+  background: #fff;
+}
+
+.domain-card-img h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.domain-card-img p {
+  font-size: 12px;
+  color: rgba(10,10,20,0.5);
+  line-height: 1.5;
+}
+
 /* ─── FLOW ─── */
 .flow {
   background: var(--cream);
@@ -1291,56 +1408,103 @@ section { position: relative; }
     <p class="section-body">
       Cutting-edge STEM disciplines delivered through expert instructors, real equipment, and structured curriculum.
     </p>
+    <!-- Core Expertise -->
     <div class="offer-grid">
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🤖</span>
-        <div class="offer-num">01</div>
-        <h3>Robotics</h3>
-        <p>Building automated, real-world solutions from path-followers to Bluetooth-controlled vehicles.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Robotics1.jpg" alt="Robotics">
+        <div class="card-body">
+          <div class="offer-num">01</div>
+          <h3>Robotics</h3>
+          <p>Building automated, real-world solutions from path-followers to Bluetooth-controlled vehicles.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🧠</span>
-        <div class="offer-num">02</div>
-        <h3>AI & Coding</h3>
-        <p>Programming languages, logic building, and introductory machine learning for young minds.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Ai & Coding.jpg" alt="AI and Coding">
+        <div class="card-body">
+          <div class="offer-num">02</div>
+          <h3>AI & Coding</h3>
+          <p>Programming languages, logic building, and introductory machine learning for young minds.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🔌</span>
-        <div class="offer-num">03</div>
-        <h3>Electronics</h3>
-        <p>Mastering circuits, sensors and microcontroller programming to bring hardware to life.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Electronics.jpg" alt="Electronics">
+        <div class="card-body">
+          <div class="offer-num">03</div>
+          <h3>Electronics</h3>
+          <p>Mastering circuits, sensors and microcontroller programming to bring hardware to life.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🛸</span>
-        <div class="offer-num">04</div>
-        <h3>Drone Tech</h3>
-        <p>Aerial technology, UAV systems, and flight mechanics — taking innovation skyward.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Drone 1.jpg" alt="Drone Technology">
+        <div class="card-body">
+          <div class="offer-num">04</div>
+          <h3>Drone Tech</h3>
+          <p>Aerial technology, UAV systems, and flight mechanics — taking innovation skyward.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🖨️</span>
-        <div class="offer-num">05</div>
-        <h3>3D Printing</h3>
-        <p>Turning digital designs into physical prototypes — CAD design to printed reality.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/3d.jpg" alt="3D Printing">
+        <div class="card-body">
+          <div class="offer-num">05</div>
+          <h3>3D Printing</h3>
+          <p>Turning digital designs into physical prototypes — CAD design to printed reality.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">📡</span>
-        <div class="offer-num">06</div>
-        <h3>IoT Systems</h3>
-        <p>Creating smart, web-connected automation and WiFi-controlled builds with Arduino & ESP.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/pcb.png" alt="PCB Design">
+        <div class="card-body">
+          <div class="offer-num">06</div>
+          <h3>PCB Design</h3>
+          <p>Designing and fabricating custom printed circuit boards from schematic to prototype.</p>
+        </div>
       </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🥽</span>
-        <div class="offer-num">07</div>
-        <h3>AR & VR</h3>
-        <p>Immersive augmented and virtual reality experiences for next-gen classroom learning.</p>
-      </div>
-      <div class="offer-card reveal">
-        <span class="offer-icon-big">🔧</span>
-        <div class="offer-num">08</div>
-        <h3>PCB Design</h3>
-        <p>Designing and fabricating custom printed circuit boards from schematic to prototype.</p>
+      <div class="offer-card-img reveal">
+        <img src="./Images/arrrrr.jpg" alt="AR and VR">
+        <div class="card-body">
+          <div class="offer-num">07</div>
+          <h3>AR & VR</h3>
+          <p>Immersive augmented and virtual reality experiences for next-gen classroom learning.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Workshops sub-section -->
+    <p class="offer-sublabel">Hands-On Workshops We Conduct</p>
+    <div class="offer-grid">
+      <div class="offer-card-img reveal">
+        <img src="./Images/Robotics work.jpg" alt="Robotics Workshop">
+        <div class="card-body">
+          <div class="offer-num">W1</div>
+          <h3>Robotics</h3>
+          <p>From basic assembly to building path-following and Bluetooth-controlled vehicles.</p>
+        </div>
+      </div>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Arduino.jpg" alt="Arduino">
+        <div class="card-body">
+          <div class="offer-num">W2</div>
+          <h3>Arduino</h3>
+          <p>Mastering microcontroller programming to bring hardware to life.</p>
+        </div>
+      </div>
+      <div class="offer-card-img reveal">
+        <img src="./Images/Sensors1.jpg" alt="Sensors">
+        <div class="card-body">
+          <div class="offer-num">W3</div>
+          <h3>Sensors</h3>
+          <p>Wiring and coding modules to interact with the physical world.</p>
+        </div>
+      </div>
+      <div class="offer-card-img reveal">
+        <img src="./Images/IOT.jpg" alt="IoT">
+        <div class="card-body">
+          <div class="offer-num">W4</div>
+          <h3>IoT Systems</h3>
+          <p>Creating smart, web-connected automation and WiFi-controlled builds.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1430,45 +1594,61 @@ section { position: relative; }
       </p>
     </div>
     <div class="domains-grid">
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🔬</span>
-        <h4>STEM</h4>
-        <p>Science, Technology, Engineering & Mathematics</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/stem.jpg" alt="STEM">
+        <div class="domain-info">
+          <h4>STEM</h4>
+          <p>Science, Technology, Engineering & Mathematics</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🤖</span>
-        <h4>Robotics</h4>
-        <p>Build, Program & Control Robots</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/Robotics.png" alt="Robotics">
+        <div class="domain-info">
+          <h4>Robotics</h4>
+          <p>Build, Program & Control Robots</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🛸</span>
-        <h4>Drone Tech</h4>
-        <p>Aerial Technology & UAV Systems</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/dronuu.jpg" alt="Drone Tech">
+        <div class="domain-info">
+          <h4>Drone Tech</h4>
+          <p>Aerial Technology & UAV Systems</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🔌</span>
-        <h4>Electronics</h4>
-        <p>Circuit Design & Microcontrollers</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/electronicsssss.webp" alt="Electronics">
+        <div class="domain-info">
+          <h4>Electronics</h4>
+          <p>Circuit Design & Microcontrollers</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">💻</span>
-        <h4>Coding</h4>
-        <p>Programming & Software Development</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/codinggg.avif" alt="Coding">
+        <div class="domain-info">
+          <h4>Coding</h4>
+          <p>Programming & Software Development</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🛰️</span>
-        <h4>Space Tech</h4>
-        <p>Space Science & Technology Exploration</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/spaceuuu.jpg" alt="Space Tech">
+        <div class="domain-info">
+          <h4>Space Tech</h4>
+          <p>Space Science & Technology Exploration</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🧠</span>
-        <h4>Artificial Intelligence</h4>
-        <p>Machine Learning & Neural Networks</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/ai.jpg" alt="Artificial Intelligence">
+        <div class="domain-info">
+          <h4>Artificial Intelligence</h4>
+          <p>Machine Learning & Neural Networks</p>
+        </div>
       </div>
-      <div class="domain-card reveal">
-        <span class="domain-emoji">🥽</span>
-        <h4>AR & VR</h4>
-        <p>Augmented & Virtual Reality</p>
+      <div class="domain-card-img reveal">
+        <img src="./Images/arvr.jpg" alt="AR and VR">
+        <div class="domain-info">
+          <h4>AR & VR</h4>
+          <p>Augmented & Virtual Reality</p>
+        </div>
       </div>
     </div>
   </div>
