@@ -155,8 +155,11 @@ body::before {
 /* Three.js canvas sits behind everything */
 #hero-canvas {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0;
+  width: 100% !important;
+  height: 100% !important;
   z-index: 0;
+  display: block;
 }
 
 .hero-grid-overlay {
@@ -2003,15 +2006,16 @@ section { position: relative; }
 ═══════════════════════════════════ */
 (function(){
   const canvas = document.getElementById('hero-canvas');
+  const hero   = canvas.parentElement;
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 100);
+  const camera = new THREE.PerspectiveCamera(75, hero.offsetWidth / hero.offsetHeight, 0.1, 100);
   camera.position.z = 3;
 
   function resize() {
-    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    const w = hero.offsetWidth, h = hero.offsetHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
