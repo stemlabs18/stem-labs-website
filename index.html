@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 :root {
@@ -35,6 +36,7 @@ body {
   overflow-x: hidden;
   font-size: 16px;
   line-height: 1.65;
+  cursor: none;
 }
 
 body::before {
@@ -46,6 +48,32 @@ body::before {
   z-index: 9999;
   opacity: 0.5;
 }
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 0 2px rgba(242,100,25,0.25), 0 0 10px rgba(242,100,25,0.6);
+}
+.cursor-ring {
+  position: fixed;
+  width: 28px; height: 28px;
+  border: 1.5px solid rgba(242,100,25,0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  background: rgba(242,100,25,0.06);
+}
+.cursor.hover { width: 14px; height: 14px; background: #ff8c42; box-shadow: 0 0 0 2px rgba(255,140,66,0.3), 0 0 14px rgba(255,140,66,0.7); }
+.cursor-ring.hover { width: 42px; height: 42px; border-color: var(--orange); background: rgba(242,100,25,0.08); }
 
 /* ─── NAVBAR ─── */
 .nav {
@@ -61,7 +89,6 @@ body::before {
   border-bottom: 1px solid var(--rule);
 }
 
-/* ── UPDATED LOGO: image + STEM(orange) LABS(blue) ── */
 .nav-logo {
   font-family: var(--font-display);
   font-size: 26px;
@@ -97,6 +124,7 @@ body::before {
   letter-spacing: 0.3px;
   opacity: 0.7;
   transition: opacity 0.2s;
+  cursor: none;
 }
 
 .nav-links a:hover { opacity: 1; }
@@ -124,6 +152,13 @@ body::before {
   overflow: hidden;
 }
 
+/* Three.js canvas sits behind everything */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .hero-grid-overlay {
   position: absolute;
   inset: 0;
@@ -131,6 +166,7 @@ body::before {
     linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+  z-index: 1;
 }
 
 .hero-left {
@@ -211,7 +247,7 @@ body::before {
   font-size: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
   border: none;
-  cursor: pointer;
+  cursor: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -235,6 +271,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: none;
 }
 
 .btn-outline:hover {
@@ -249,12 +286,20 @@ body::before {
   justify-content: center;
   z-index: 2;
   padding: 120px 60px 80px;
+  perspective: 1200px;
 }
 
 .hero-visual {
   position: relative;
   width: 100%;
   max-width: 420px;
+  transform-style: preserve-3d;
+  animation: panelFloat 6s ease-in-out infinite;
+}
+
+@keyframes panelFloat {
+  0%, 100% { transform: rotateY(-8deg) rotateX(4deg) translateY(0); }
+  50%       { transform: rotateY(-8deg) rotateX(4deg) translateY(-16px); }
 }
 
 .hero-card-big {
@@ -263,7 +308,32 @@ body::before {
   border-radius: 20px;
   padding: 32px;
   backdrop-filter: blur(10px);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
 }
+
+.hero-card-big::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(242,100,25,0.06) 0%, transparent 50%, rgba(13,71,161,0.06) 100%);
+  pointer-events: none;
+}
+
+.hero-card-big::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(242,100,25,0.03) 60deg, transparent 120deg);
+  animation: panelSpin 8s linear infinite;
+}
+
+@keyframes panelSpin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
 
 .hero-stat-row {
   display: grid;
@@ -285,6 +355,7 @@ body::before {
   font-weight: 800;
   color: #fff;
   line-height: 1;
+  text-shadow: 0 0 30px rgba(255,255,255,0.3);
 }
 
 .hero-stat-num span { color: var(--orange); }
@@ -336,6 +407,34 @@ body::before {
   color: rgba(255,255,255,0.8);
   letter-spacing: 0.5px;
 }
+
+/* ─── TICKER ─── */
+.ticker {
+  background: linear-gradient(90deg, var(--orange), #e55a10, var(--orange));
+  background-size: 200% 100%;
+  animation: tickerGrad 4s linear infinite;
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 3;
+}
+@keyframes tickerGrad { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+.ticker-track { display: inline-block; animation: tickScroll 30s linear infinite; }
+@keyframes tickScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ti {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-right: 40px;
+}
+.ts { color: rgba(255,255,255,0.5); font-size: 16px; }
 
 /* ─── SECTION COMMONS ─── */
 section { position: relative; }
@@ -533,7 +632,6 @@ section { position: relative; }
   display: block;
 }
 
-/* ── IMAGE CARDS for Offer & Domains ── */
 .offer-card-img {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -597,7 +695,6 @@ section { position: relative; }
   line-height: 1.55;
 }
 
-/* Workshops sub-grid label */
 .offer-sublabel {
   font-family: var(--font-display);
   font-size: 13px;
@@ -608,7 +705,6 @@ section { position: relative; }
   margin: 48px 0 20px;
 }
 
-/* Domain image cards */
 .domain-card-img {
   border: 1px solid var(--rule);
   border-radius: 16px;
@@ -735,7 +831,6 @@ section { position: relative; }
   line-height: 1.6;
 }
 
-/* ── FLOW STACKED IMAGE CARD ── */
 .flow-img-stack {
   position: relative;
   width: 200px;
@@ -965,6 +1060,7 @@ section { position: relative; }
   border-radius: 100px;
   padding: 6px 12px;
   transition: background 0.2s, color 0.2s;
+  cursor: none;
 }
 
 .grade-dl:hover {
@@ -986,6 +1082,7 @@ section { position: relative; }
   font-size: 15px;
   white-space: nowrap;
   transition: background 0.2s;
+  cursor: none;
 }
 
 .dl-all:hover { background: var(--orange); }
@@ -1060,6 +1157,7 @@ section { position: relative; }
   outline: none;
   transition: border-color 0.2s;
   width: 100%;
+  cursor: none;
 }
 
 .field input::placeholder { color: rgba(255,255,255,0.25); }
@@ -1067,7 +1165,7 @@ section { position: relative; }
 .field select:focus { border-color: var(--orange); }
 
 .field select {
-  cursor: pointer;
+  cursor: none;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.4)' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -1182,6 +1280,7 @@ section { position: relative; }
   text-decoration: none;
   font-size: 17px;
   transition: all 0.2s;
+  cursor: none;
 }
 
 .footer-link:hover {
@@ -1203,6 +1302,7 @@ section { position: relative; }
   color: rgba(255,255,255,0.4);
   font-size: 14px;
   transition: color 0.2s;
+  cursor: none;
 }
 
 .footer-nav a:hover { color: #fff; }
@@ -1235,6 +1335,7 @@ section { position: relative; }
   box-shadow: 0 8px 24px rgba(37,211,102,0.4);
   z-index: 9000;
   transition: transform 0.25s, box-shadow 0.25s;
+  cursor: none;
 }
 
 .chat-float:hover {
@@ -1275,7 +1376,11 @@ section { position: relative; }
 </head>
 <body>
 
-<!-- NAV — logo image + STEM(orange) LABS(blue) -->
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="#">
     <img src="./Images/logo3.png" alt="STEM LABS Logo">
@@ -1292,6 +1397,7 @@ section { position: relative; }
 
 <!-- HERO -->
 <section class="hero">
+  <canvas id="hero-canvas"></canvas>
   <div class="hero-grid-overlay"></div>
 
   <div class="hero-left">
@@ -1346,6 +1452,28 @@ section { position: relative; }
     </div>
   </div>
 </section>
+
+<!-- ORANGE TICKER STRIP -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti">🤖 Robotics <span class="ts">·</span></span>
+    <span class="ti">💻 AI &amp; Coding <span class="ts">·</span></span>
+    <span class="ti">🔌 Electronics <span class="ts">·</span></span>
+    <span class="ti">🛸 Drone Technology <span class="ts">·</span></span>
+    <span class="ti">🖨️ 3D Printing <span class="ts">·</span></span>
+    <span class="ti">🥽 AR &amp; VR <span class="ts">·</span></span>
+    <span class="ti">📡 IoT Systems <span class="ts">·</span></span>
+    <span class="ti">🛰️ Space Tech <span class="ts">·</span></span>
+    <span class="ti">🤖 Robotics <span class="ts">·</span></span>
+    <span class="ti">💻 AI &amp; Coding <span class="ts">·</span></span>
+    <span class="ti">🔌 Electronics <span class="ts">·</span></span>
+    <span class="ti">🛸 Drone Technology <span class="ts">·</span></span>
+    <span class="ti">🖨️ 3D Printing <span class="ts">·</span></span>
+    <span class="ti">🥽 AR &amp; VR <span class="ts">·</span></span>
+    <span class="ti">📡 IoT Systems <span class="ts">·</span></span>
+    <span class="ti">🛰️ Space Tech <span class="ts">·</span></span>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -1408,7 +1536,6 @@ section { position: relative; }
     <p class="section-body">
       Cutting-edge STEM disciplines delivered through expert instructors, real equipment, and structured curriculum.
     </p>
-    <!-- Core Expertise -->
     <div class="offer-grid">
       <div class="offer-card-img reveal">
         <img src="./Images/Robotics1.jpg" alt="Robotics">
@@ -1468,7 +1595,6 @@ section { position: relative; }
       </div>
     </div>
 
-    <!-- Workshops sub-section -->
     <p class="offer-sublabel">Hands-On Workshops We Conduct</p>
     <div class="offer-grid">
       <div class="offer-card-img reveal">
@@ -1508,7 +1634,7 @@ section { position: relative; }
   </div>
 </section>
 
-<!-- FLOW — with stacked images from original code -->
+<!-- FLOW -->
 <section class="flow">
   <div class="flow-inner">
     <div class="flow-header reveal">
@@ -1522,7 +1648,6 @@ section { position: relative; }
     </div>
     <div class="flow-steps">
 
-      <!-- STEP 1 -->
       <div class="flow-step reveal">
         <div class="step-circle sc-1">
           <div class="step-num">10</div>
@@ -1536,7 +1661,6 @@ section { position: relative; }
         <p>Interactive visual explanations and concept discussions prepare students for hands-on work.</p>
       </div>
 
-      <!-- STEP 2 -->
       <div class="flow-step reveal">
         <div class="step-circle sc-2">
           <div class="step-num">25</div>
@@ -1550,7 +1674,6 @@ section { position: relative; }
         <p>Students build and experiment with robotics kits, electronics, and coding platforms.</p>
       </div>
 
-      <!-- STEP 3 -->
       <div class="flow-step reveal">
         <div class="step-circle sc-3">
           <div class="step-num">10</div>
@@ -1564,7 +1687,6 @@ section { position: relative; }
         <p>Students explain their projects, sharpen communication and creative thinking skills.</p>
       </div>
 
-      <!-- STEP 4 -->
       <div class="flow-step reveal">
         <div class="step-circle sc-4">
           <div class="step-num">∞</div>
@@ -1876,6 +1998,119 @@ section { position: relative; }
 </a>
 
 <script>
+/* ═══════════════════════════════════
+   1. THREE.JS PARTICLE BACKGROUND
+═══════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 100);
+  camera.position.z = 3;
+
+  function resize() {
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = 3000;
+  const geo = new THREE.BufferGeometry();
+  const pos = new Float32Array(COUNT * 3);
+  const col = new Float32Array(COUNT * 3);
+  const sizes = new Float32Array(COUNT);
+
+  const orangeC = new THREE.Color(0xf26419);
+  const blueC   = new THREE.Color(0x1976d2);
+  const whiteC  = new THREE.Color(0xffffff);
+
+  for (let i = 0; i < COUNT; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    const r     = 1.5 + Math.random() * 3;
+    pos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+    pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+    pos[i*3+2] = r * Math.cos(phi) - 1;
+
+    const t = Math.random();
+    const c = t < 0.33 ? orangeC : t < 0.66 ? blueC : whiteC;
+    col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+    sizes[i] = Math.random() * 2 + 0.5;
+  }
+
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color',    new THREE.BufferAttribute(col, 3));
+  geo.setAttribute('size',     new THREE.BufferAttribute(sizes, 1));
+
+  const mat = new THREE.PointsMaterial({
+    size: 0.015, vertexColors: true, transparent: true, opacity: 0.8,
+    sizeAttenuation: true, blending: THREE.AdditiveBlending, depthWrite: false
+  });
+
+  const particles = new THREE.Points(geo, mat);
+  scene.add(particles);
+
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    my = -(e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.004;
+    particles.rotation.y = t * 0.15 + mx * 0.2;
+    particles.rotation.x = my * 0.1;
+    mat.opacity = 0.6 + Math.sin(t) * 0.2;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* ═══════════════════════════════════
+   2. CUSTOM ORANGE CURSOR
+═══════════════════════════════════ */
+const cur  = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let cx = 0, cy = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+
+(function curLoop() {
+  rx += (cx - rx) * 0.12;
+  ry += (cy - ry) * 0.12;
+  cur.style.left  = cx + 'px';
+  cur.style.top   = cy + 'px';
+  curR.style.left = rx + 'px';
+  curR.style.top  = ry + 'px';
+  requestAnimationFrame(curLoop);
+})();
+
+/* Hero panel mouse parallax */
+const heroPanel = document.querySelector('.hero-visual');
+if (heroPanel) {
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+    heroPanel.style.animation = 'none';
+    heroPanel.style.transform = `rotateY(${-8 + x * 0.5}deg) rotateX(${4 - y * 0.3}deg) translateY(0)`;
+  });
+}
+
+document.querySelectorAll('a, button, .offer-card-img, .about-feature, .domain-card-img, .flow-step, .grade-tile, .school-badge, .domain-pill, .check-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.classList.add('hover'); curR.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); curR.classList.remove('hover'); });
+});
+
+/* ═══════════════════════════════════
+   3. SCROLL REVEAL (unchanged)
+═══════════════════════════════════ */
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
@@ -1887,6 +2122,9 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(el => observer.observe(el));
 
+/* ═══════════════════════════════════
+   4. FORM SUBMIT (unchanged)
+═══════════════════════════════════ */
 const form = document.getElementById("demoForm");
 form.addEventListener("submit", function(e) {
   e.preventDefault();
