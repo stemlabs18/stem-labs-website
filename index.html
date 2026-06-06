@@ -25,7 +25,7 @@
   --font-body: 'DM Sans', sans-serif;
 }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
 html { scroll-behavior: smooth; zoom: 0.9; }
 
@@ -2921,11 +2921,26 @@ const cur  = document.getElementById('cur');
 const curR = document.getElementById('curR');
 let cx = 0, cy = 0, rx = 0, ry = 0;
 
-document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+document.addEventListener('mousemove', e => {
+  cx = e.clientX;
+  cy = e.clientY;
+  cur.style.opacity  = '1';
+  curR.style.opacity = '1';
+});
+
+document.addEventListener('mouseleave', () => {
+  cur.style.opacity  = '0';
+  curR.style.opacity = '0';
+});
+
+document.addEventListener('mouseenter', () => {
+  cur.style.opacity  = '1';
+  curR.style.opacity = '1';
+});
 
 (function curLoop() {
-  rx += (cx - rx) * 0.12;
-  ry += (cy - ry) * 0.12;
+  rx += (cx - rx) * 0.15;
+  ry += (cy - ry) * 0.15;
   cur.style.left  = cx + 'px';
   cur.style.top   = cy + 'px';
   curR.style.left = rx + 'px';
@@ -2944,9 +2959,20 @@ if (heroPanel) {
   });
 }
 
-document.querySelectorAll('a, button, .offer-card-img, .about-feature, .domain-card-img, .flow-step, .grade-tile, .school-badge, .domain-pill, .check-pill').forEach(el => {
-  el.addEventListener('mouseenter', () => { cur.classList.add('hover'); curR.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { cur.classList.remove('hover'); curR.classList.remove('hover'); });
+const hoverTargets = 'a, button, .offer-card-img, .about-feature, .domain-card-img, .flow-step, .grade-tile, .school-badge, .domain-pill, .check-pill, .entry-card, .cat-tab, .proj-card, .back-btn, .grade-dl, .dl-all';
+
+document.addEventListener('mouseover', e => {
+  if (e.target.closest(hoverTargets)) {
+    cur.classList.add('hover');
+    curR.classList.add('hover');
+  }
+});
+
+document.addEventListener('mouseout', e => {
+  if (e.target.closest(hoverTargets)) {
+    cur.classList.remove('hover');
+    curR.classList.remove('hover');
+  }
 });
 
 /* ═══════════════════════════════════
