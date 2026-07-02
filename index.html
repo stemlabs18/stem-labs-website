@@ -1584,6 +1584,62 @@ section { position: relative; }
   color: var(--ink);
 }
 
+/* ─── TEAM ─── */
+.team { background: var(--cream); padding: 120px 48px; }
+.team-inner { max-width: 1200px; margin: auto; }
+.team .section-label { text-align: center; }
+.team .section-title { text-align: center; margin-bottom: 56px; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.team-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(242,100,25,0.12);
+  border-color: var(--orange);
+}
+
+.team-photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  background: var(--orange-light);
+}
+
+.team-info { padding: 22px 20px 26px; }
+
+.team-info h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.team-role {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--orange);
+  background: var(--orange-light);
+  padding: 6px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+}
+
 /* ─── FOOTER ─── */
 .footer { background: #07070f; padding: 60px 48px 40px; }
 
@@ -1709,18 +1765,20 @@ section { position: relative; }
   .domains-grid { grid-template-columns: repeat(2, 1fr); }
   .grades-grid { grid-template-columns: repeat(3, 1fr); }
   .curriculum-top { grid-template-columns: 1fr; }
-  .about, .offer, .flow, .domains, .vision, .curriculum, .contact, .schools, .explore { padding: 80px 24px; }
+  .about, .offer, .flow, .domains, .vision, .curriculum, .contact, .schools, .explore, .team { padding: 80px 24px; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-nav { text-align: left; }
   .entry-grid { grid-template-columns: 1fr; }
   .proj-grid { grid-template-columns: 1fr 1fr; }
   .enquiry-bar { flex-direction: column; align-items: flex-start; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
   .proj-grid { grid-template-columns: 1fr; }
   .enq-btns { flex-direction: column; width: 100%; }
   .btn-wa, .btn-mail { justify-content: center; }
+  .team-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -2347,6 +2405,48 @@ section { position: relative; }
     <div class="school-icon"><i class="fas fa-school"></i></div>
     <span>Vijetha E.M School</span>
   </div>
+      <div class="school-badge">
+    <div class="school-icon"><i class="fas fa-school"></i></div>
+    <span>Vidyarthi School</span>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="team-inner">
+    <p class="section-label">Meet the People Behind STEM LABS</p>
+    <h2 class="section-title reveal">Our Core Team</h2>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img src="./Images/muni.jpeg" alt="Munendra K" class="team-photo">
+        <div class="team-info">
+          <h4>Munendra K</h4>
+          <span class="team-role">Founder</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="./Images/sanjeev.jpeg" alt="Sanjeev Raju" class="team-photo">
+        <div class="team-info">
+          <h4>Sanjeev Raju</h4>
+          <span class="team-role">Co Founder & CEO</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="./Images/charan.jpeg" alt="Ram Charan" class="team-photo">
+        <div class="team-info">
+          <h4>Ram Charan</h4>
+          <span class="team-role">Co Founder</span>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <img src="./Images/chandu.png" alt="Chandu Vangara" class="team-photo">
+        <div class="team-info">
+          <h4>Chandu Vangara</h4>
+          <span class="team-role">Technical Manager</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
