@@ -1720,24 +1720,80 @@ section { position: relative; }
 
 .school-modal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
 }
 
 .school-modal-grid img {
   width: 100%;
-  height: 140px;
+  height: 190px;
   object-fit: cover;
   border-radius: 14px;
   border: 1px solid var(--rule);
   background: #fff;
   display: block;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.school-modal-grid img:hover {
+  transform: scale(1.03);
 }
 
 @media (max-width: 600px) {
   .school-modal-card { padding: 28px 20px; }
-  .school-modal-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .school-modal-grid img { height: 110px; }
+  .school-modal-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .school-modal-grid img { height: 150px; }
+}
+
+/* ─── IMAGE LIGHTBOX ─── */
+.img-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.img-lightbox.open {
+  display: flex;
+  animation: fadeUp 0.25s ease;
+}
+
+.img-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.img-lightbox-close {
+  position: absolute;
+  top: 24px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.img-lightbox-close:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+@media (max-width: 600px) {
+  .img-lightbox { padding: 20px; }
+  .img-lightbox-close { top: 16px; right: 16px; width: 38px; height: 38px; }
 }
 
 /* ─── TEAM ─── */
@@ -2622,6 +2678,12 @@ section { position: relative; }
   </div>
 </div>
 
+<!-- FULL IMAGE LIGHTBOX -->
+<div class="img-lightbox" id="imgLightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="img-lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+  <img id="imgLightboxPic" src="" alt="">
+</div>
+
 <!-- TEAM -->
 <section class="team" id="team">
   <div class="team-inner">
@@ -2877,11 +2939,13 @@ function openSchoolGallery(key) {
   grid.innerHTML = '';
   for (let i = 1; i <= school.count; i++) {
     const ext = (school.prefix === 'mary' && i === 9) ? 'jpeg' : 'jpg';
+    const src = `./Images/${school.prefix}${i}.${ext}`;
     const img = document.createElement('img');
-    img.src = `./Images/${school.prefix}${i}.${ext}`;
+    img.src = src;
     img.alt = `${school.name} photo ${i}`;
     img.loading = 'lazy';
     img.onerror = function() { this.closest('.school-modal-grid') && this.remove(); };
+    img.onclick = function() { openLightbox(src, img.alt); };
     grid.appendChild(img);
   }
 
@@ -2892,6 +2956,17 @@ function openSchoolGallery(key) {
 function closeSchoolGallery() {
   document.getElementById('schoolModal').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function openLightbox(src, alt) {
+  const pic = document.getElementById('imgLightboxPic');
+  pic.src = src;
+  pic.alt = alt || '';
+  document.getElementById('imgLightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('imgLightbox').classList.remove('open');
 }
 </script>
 </body>
