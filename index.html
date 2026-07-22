@@ -1598,11 +1598,13 @@ section { position: relative; }
   border-radius: 100px;
   padding: 14px 26px;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .school-badge:hover {
   border-color: var(--orange);
   box-shadow: 0 8px 24px rgba(242,100,25,0.1);
+  transform: translateY(-3px);
 }
 
 .school-icon {
@@ -1614,6 +1616,14 @@ section { position: relative; }
   justify-content: center;
   font-size: 16px;
   color: #fff;
+  overflow: hidden;
+}
+
+.school-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .school-badge span {
@@ -1621,6 +1631,113 @@ section { position: relative; }
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
+}
+
+/* ─── SCHOOL GALLERY MODAL ─── */
+.school-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(10,10,20,0.82);
+  backdrop-filter: blur(6px);
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+
+.school-modal.open {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  animation: fadeUp 0.3s ease;
+}
+
+.school-modal-card {
+  background: var(--cream);
+  border-radius: 24px;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  margin: auto;
+}
+
+.school-modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+
+.school-modal-close:hover {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+
+.school-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.school-modal-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.school-modal-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+.school-modal-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.school-modal-sub {
+  font-size: 13px;
+  color: rgba(10,10,20,0.5);
+}
+
+.school-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.school-modal-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .school-modal-card { padding: 28px 20px; }
+  .school-modal-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .school-modal-grid img { height: 110px; }
 }
 
 /* ─── TEAM ─── */
@@ -2472,22 +2589,38 @@ section { position: relative; }
   <div class="schools-inner">
     <p class="section-label" style="text-align:center;">Trusted By</p>
     <h2 class="section-title reveal">Our School Collaborations</h2>
+    <p style="font-size:13px;color:rgba(10,10,20,0.45);margin-top:-32px;margin-bottom:32px;">Tap a school to view photos</p>
     <div class="schools-logo-row reveal">
-      <div class="school-badge">
+      <div class="school-badge" onclick="openSchoolGallery('mary')">
         <div class="school-icon"><i class="fas fa-school"></i></div>
         <span>St. Mary's School</span>
       </div>
-      <div class="school-badge">
-    <div class="school-icon"><i class="fas fa-school"></i></div>
-    <span>Vijetha E.M School</span>
-  </div>
-      <div class="school-badge">
-    <div class="school-icon"><i class="fas fa-school"></i></div>
-    <span>Vidyarthi School</span>
-  </div>
+      <div class="school-badge" onclick="openSchoolGallery('vijetha')">
+        <div class="school-icon"><i class="fas fa-school"></i></div>
+        <span>Vijetha E.M School</span>
+      </div>
+      <div class="school-badge" onclick="openSchoolGallery('vidyarthi')">
+        <div class="school-icon"><i class="fas fa-school"></i></div>
+        <span>Vidyarthi School</span>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- SCHOOL GALLERY MODAL -->
+<div class="school-modal" id="schoolModal" onclick="if(event.target===this) closeSchoolGallery()">
+  <div class="school-modal-card">
+    <button class="school-modal-close" onclick="closeSchoolGallery()"><i class="fas fa-times"></i></button>
+    <div class="school-modal-header">
+      <div class="school-modal-icon"><i class="fas fa-school"></i></div>
+      <div>
+        <div class="school-modal-title" id="schoolModalTitle">School Name</div>
+        <div class="school-modal-sub" id="schoolModalSub">Photo gallery</div>
+      </div>
+    </div>
+    <div class="school-modal-grid" id="schoolModalGrid"></div>
+  </div>
+</div>
 
 <!-- TEAM -->
 <section class="team" id="team">
@@ -2712,6 +2845,52 @@ function switchCat(key, el) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('pane-' + key).classList.add('active');
   el.classList.add('active');
+}
+
+/* SCHOOL GALLERY */
+const SCHOOL_DATA = {
+  mary: {
+    name: "St. Mary's School",
+    prefix: "mary",
+    count: 10
+  },
+  vijetha: {
+    name: "Vijetha E.M School",
+    prefix: "vij",
+    count: 10
+  },
+  vidyarthi: {
+    name: "Vidyarthi School",
+    prefix: "vidya",
+    count: 10
+  }
+};
+
+function openSchoolGallery(key) {
+  const school = SCHOOL_DATA[key];
+  if (!school) return;
+
+  document.getElementById('schoolModalTitle').textContent = school.name;
+  document.getElementById('schoolModalSub').textContent = 'Photo gallery';
+
+  const grid = document.getElementById('schoolModalGrid');
+  grid.innerHTML = '';
+  for (let i = 1; i <= school.count; i++) {
+    const img = document.createElement('img');
+    img.src = `./Images/Schools/${school.prefix}${i}.jpg`;
+    img.alt = `${school.name} photo ${i}`;
+    img.loading = 'lazy';
+    img.onerror = function() { this.closest('.school-modal-grid') && this.remove(); };
+    grid.appendChild(img);
+  }
+
+  document.getElementById('schoolModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSchoolGallery() {
+  document.getElementById('schoolModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 </script>
 </body>
