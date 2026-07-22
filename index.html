@@ -2938,7 +2938,7 @@ function openSchoolGallery(key) {
   const grid = document.getElementById('schoolModalGrid');
   grid.innerHTML = '';
   for (let i = 1; i <= school.count; i++) {
-    const ext = (school.prefix === 'mary' && i === 9) ? 'jpeg' : 'jpg';
+    const ext = (school.prefix === 'mary' && i === 10) ? 'jpeg' : 'jpg';
     const src = `./Images/${school.prefix}${i}.${ext}`;
     const img = document.createElement('img');
     img.src = src;
