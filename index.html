@@ -3326,10 +3326,17 @@ function buildMomentsPhotos() {
     for (let i = 1; i <= school.count; i++) {
       const ext = (school.prefix === 'mary' && (i === 1 || i === 9)) ? 'jpeg' : 'jpg';
       const src = `./Images/${school.prefix}${i}.${ext}`;
-      html += `<a class="moments-card" href="#" onclick="openLightbox('${src}','${school.name} photo ${i}');return false;"><img src="${src}" alt="${school.name} photo ${i}" loading="lazy"></a>`;
+      const alt = `${school.name} photo ${i}`;
+      html += `<a class="moments-card" href="#" data-src="${src}" data-alt="${alt.replace(/"/g, '&quot;')}"><img src="${src}" alt="${alt.replace(/"/g, '&quot;')}" loading="lazy"></a>`;
     }
   });
   grid.innerHTML = html;
+  grid.addEventListener('click', function (e) {
+    const card = e.target.closest('.moments-card');
+    if (!card) return;
+    e.preventDefault();
+    openLightbox(card.dataset.src, card.dataset.alt);
+  });
 }
 
 function switchMoments(view) {
