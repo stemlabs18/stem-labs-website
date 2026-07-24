@@ -994,6 +994,55 @@ section { position: relative; }
 .moments-panel{ display:none; }
 .moments-panel.active{ display:block; animation: fadeUp 0.35s ease; }
 
+.moments-schools{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:16px;
+  max-width:640px;
+  margin:0 auto;
+}
+.moments-school-card{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:rgba(255,255,255,0.95);
+  border:none;
+  border-radius:100px;
+  padding:15px 26px;
+  cursor:pointer;
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:800;
+  color:var(--ink);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.moments-school-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,0.2); }
+.moments-school-icon{
+  width:36px; height:36px;
+  background:var(--orange-light);
+  color:var(--orange);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  flex-shrink:0;
+}
+.moments-photo-view{ text-align:left; }
+.moments-photo-view .back-btn{
+  background:rgba(255,255,255,0.92);
+  margin-bottom:22px;
+}
+#momentsSchoolTitle{
+  font-family:var(--font-display);
+  font-size:20px;
+  font-weight:800;
+  color:#fff;
+  margin-bottom:18px;
+  text-align:center;
+}
+
 .moments-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
@@ -1945,119 +1994,6 @@ section { position: relative; }
   color: var(--ink);
 }
 
-/* ─── SCHOOL GALLERY MODAL ─── */
-.school-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(10,10,20,0.82);
-  backdrop-filter: blur(6px);
-  padding: 40px 24px;
-  overflow-y: auto;
-}
-
-.school-modal.open {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  animation: fadeUp 0.3s ease;
-}
-
-.school-modal-card {
-  background: var(--cream);
-  border-radius: 24px;
-  max-width: 900px;
-  width: 100%;
-  padding: 40px;
-  position: relative;
-  margin: auto;
-}
-
-.school-modal-close {
-  position: absolute;
-  top: 20px; right: 20px;
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--rule);
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--ink);
-  transition: all 0.2s;
-}
-
-.school-modal-close:hover {
-  background: var(--orange);
-  color: #fff;
-  border-color: var(--orange);
-}
-
-.school-modal-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.school-modal-icon {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.school-modal-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
-.school-modal-title {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--ink);
-}
-
-.school-modal-sub {
-  font-size: 13px;
-  color: rgba(10,10,20,0.5);
-}
-
-.school-modal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 16px;
-}
-
-.school-modal-grid img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid var(--rule);
-  background: #fff;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.school-modal-grid img:hover {
-  transform: scale(1.03);
-}
-
-@media (max-width: 600px) {
-  .school-modal-card { padding: 28px 20px; }
-  .school-modal-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .school-modal-grid img { height: 150px; }
-}
-
 /* ─── IMAGE LIGHTBOX ─── */
 .img-lightbox {
   display: none;
@@ -2116,9 +2052,9 @@ section { position: relative; }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 760px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
@@ -2964,7 +2900,12 @@ section { position: relative; }
     </div>
 
     <div class="moments-panel active" id="momentsPhotosPanel">
-      <div class="moments-grid" id="momentsPhotoGrid"></div>
+      <div class="moments-schools" id="momentsSchoolList"></div>
+      <div class="moments-photo-view" id="momentsPhotoView" style="display:none;">
+        <button class="back-btn" id="momentsBackBtn" onclick="momentsBackToSchools()"><i class="fas fa-arrow-left"></i> Back to Schools</button>
+        <h4 id="momentsSchoolTitle"></h4>
+        <div class="moments-grid" id="momentsPhotoGrid"></div>
+      </div>
     </div>
 
     <div class="moments-panel" id="momentsVideosPanel">
@@ -3000,38 +2941,34 @@ section { position: relative; }
   <div class="schools-inner">
     <p class="section-label" style="text-align:center;">Trusted By</p>
     <h2 class="section-title reveal">Our School Collaborations</h2>
-    <p style="font-size:13px;color:rgba(10,10,20,0.45);margin-top:-32px;margin-bottom:32px;">Tap a school to view photos</p>
     <div class="schools-logo-row reveal">
-      <div class="school-badge" onclick="openSchoolGallery('mary')">
+      <div class="school-badge">
         <div class="school-icon"><i class="fas fa-school"></i></div>
         <span>St. Mary's School</span>
       </div>
-      <div class="school-badge" onclick="openSchoolGallery('vijetha')">
+      <div class="school-badge">
         <div class="school-icon"><i class="fas fa-school"></i></div>
         <span>Vijetha E.M School</span>
       </div>
-      <div class="school-badge" onclick="openSchoolGallery('vidyarthi')">
+      <div class="school-badge">
         <div class="school-icon"><i class="fas fa-school"></i></div>
         <span>Vidyarthi School</span>
+      </div>
+      <div class="school-badge">
+        <div class="school-icon"><i class="fas fa-school"></i></div>
+        <span>DPS Kollur</span>
+      </div>
+      <div class="school-badge">
+        <div class="school-icon"><i class="fas fa-school"></i></div>
+        <span>DPS Patancheruvu</span>
+      </div>
+      <div class="school-badge">
+        <div class="school-icon"><i class="fas fa-school"></i></div>
+        <span>Geethanjali School</span>
       </div>
     </div>
   </div>
 </section>
-
-<!-- SCHOOL GALLERY MODAL -->
-<div class="school-modal" id="schoolModal" onclick="if(event.target===this) closeSchoolGallery()">
-  <div class="school-modal-card">
-    <button class="school-modal-close" onclick="closeSchoolGallery()"><i class="fas fa-times"></i></button>
-    <div class="school-modal-header">
-      <div class="school-modal-icon"><i class="fas fa-school"></i></div>
-      <div>
-        <div class="school-modal-title" id="schoolModalTitle">School Name</div>
-        <div class="school-modal-sub" id="schoolModalSub">Photo gallery</div>
-      </div>
-    </div>
-    <div class="school-modal-grid" id="schoolModalGrid"></div>
-  </div>
-</div>
 
 <!-- FULL IMAGE LIGHTBOX -->
 <div class="img-lightbox" id="imgLightbox" onclick="if(event.target===this) closeLightbox()">
@@ -3057,13 +2994,6 @@ section { position: relative; }
         <div class="team-info">
           <h4>Sanjeev Raju</h4>
           <span class="team-role">Co Founder & CEO</span>
-        </div>
-      </div>
-      <div class="team-card reveal">
-        <img src="./Images/charan.jpeg" alt="Ram Charan" class="team-photo">
-        <div class="team-info">
-          <h4>Ram Charan</h4>
-          <span class="team-role">Co Founder</span>
         </div>
       </div>
       <div class="team-card reveal">
@@ -3312,31 +3242,59 @@ function ssMove(trackId, dir) {
   if (dir > 0) stemxSliders[trackId].next(); else stemxSliders[trackId].prev();
 }
 
-/* STUDENT MOMENTS: build photos + toggle */
+/* STUDENT MOMENTS: school selector + photos + toggle */
 const MOMENTS_SCHOOLS = [
-  { name: "St. Mary's School", prefix: 'mary', count: 9 },
-  { name: 'Vijetha E.M School', prefix: 'vij', count: 10 }
+  { key: 'mary', name: "St. Mary's School", prefix: 'mary', start: 1, end: 10 },
+  { key: 'vijetha', name: 'Vijetha School', prefix: 'vij', start: 1, end: 10 },
+  { key: 'dps-kollur', name: 'DPS Kollur', prefix: 'dps', start: 1, end: 6 },
+  { key: 'dps-patancheruvu', name: 'DPS Patancheruvu', prefix: 'dps', start: 7, end: 12 }
 ];
 
-function buildMomentsPhotos() {
+function buildMomentsSchoolList() {
+  const list = document.getElementById('momentsSchoolList');
+  if (!list) return;
+  list.innerHTML = MOMENTS_SCHOOLS.map(s =>
+    `<button class="moments-school-card" data-key="${s.key}"><span class="moments-school-icon"><i class="fas fa-school"></i></span>${s.name}</button>`
+  ).join('');
+  list.querySelectorAll('.moments-school-card').forEach(btn => {
+    btn.addEventListener('click', () => showMomentsSchool(btn.dataset.key));
+  });
+}
+
+function showMomentsSchool(key) {
+  const school = MOMENTS_SCHOOLS.find(s => s.key === key);
+  if (!school) return;
+  document.getElementById('momentsSchoolList').style.display = 'none';
+  document.getElementById('momentsPhotoView').style.display = 'block';
+  document.getElementById('momentsSchoolTitle').textContent = school.name;
+
   const grid = document.getElementById('momentsPhotoGrid');
-  if (!grid) return;
   let html = '';
-  MOMENTS_SCHOOLS.forEach(school => {
-    for (let i = 1; i <= school.count; i++) {
-      const ext = (school.prefix === 'mary' && (i === 1 || i === 9)) ? 'jpeg' : 'jpg';
-      const src = `./Images/${school.prefix}${i}.${ext}`;
-      const alt = `${school.name} photo ${i}`;
-      html += `<a class="moments-card" href="#" data-src="${src}" data-alt="${alt.replace(/"/g, '&quot;')}"><img src="${src}" alt="${alt.replace(/"/g, '&quot;')}" loading="lazy"></a>`;
-    }
-  });
+  for (let i = school.start; i <= school.end; i++) {
+    const ext = (school.prefix === 'mary' && (i === 1 || i === 9)) ? 'jpeg' : 'jpg';
+    const src = `./Images/${school.prefix}${i}.${ext}`;
+    const alt = `${school.name} photo ${i}`.replace(/"/g, '&quot;');
+    html += `<a class="moments-card" href="#" data-src="${src}" data-alt="${alt}"><img src="${src}" alt="${alt}" loading="lazy"></a>`;
+  }
   grid.innerHTML = html;
-  grid.addEventListener('click', function (e) {
-    const card = e.target.closest('.moments-card');
-    if (!card) return;
-    e.preventDefault();
-    openLightbox(card.dataset.src, card.dataset.alt);
-  });
+}
+
+function momentsBackToSchools() {
+  document.getElementById('momentsPhotoView').style.display = 'none';
+  document.getElementById('momentsSchoolList').style.display = 'flex';
+}
+
+function initMomentsPhotoView() {
+  buildMomentsSchoolList();
+  const grid = document.getElementById('momentsPhotoGrid');
+  if (grid) {
+    grid.addEventListener('click', function (e) {
+      const card = e.target.closest('.moments-card');
+      if (!card) return;
+      e.preventDefault();
+      openLightbox(card.dataset.src, card.dataset.alt);
+    });
+  }
 }
 
 function switchMoments(view) {
@@ -3350,57 +3308,8 @@ function switchMoments(view) {
   }
 }
 
-buildMomentsPhotos();
+initMomentsPhotoView();
 initStemxSlider('momentsVideoTrack', 'momentsVideoDots', 'momentsVideoCur', 'momentsVideoTotal', 999999999);
-
-/* SCHOOL GALLERY */
-const SCHOOL_DATA = {
-  mary: {
-    name: "St. Mary's School",
-    prefix: "mary",
-    count: 9
-  },
-  vijetha: {
-    name: "Vijetha E.M School",
-    prefix: "vij",
-    count: 10
-  },
-  vidyarthi: {
-    name: "Vidyarthi School",
-    prefix: "vidya",
-    count: 10
-  }
-};
-
-function openSchoolGallery(key) {
-  const school = SCHOOL_DATA[key];
-  if (!school) return;
-
-  document.getElementById('schoolModalTitle').textContent = school.name;
-  document.getElementById('schoolModalSub').textContent = 'Photo gallery';
-
-  const grid = document.getElementById('schoolModalGrid');
-  grid.innerHTML = '';
-  for (let i = 1; i <= school.count; i++) {
-    const ext = (school.prefix === 'mary' && (i === 1 || i === 9)) ? 'jpeg' : 'jpg';
-    const src = `./Images/${school.prefix}${i}.${ext}`;
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = `${school.name} photo ${i}`;
-    img.loading = 'lazy';
-    img.onerror = function() { this.closest('.school-modal-grid') && this.remove(); };
-    img.onclick = function() { openLightbox(src, img.alt); };
-    grid.appendChild(img);
-  }
-
-  document.getElementById('schoolModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeSchoolGallery() {
-  document.getElementById('schoolModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
 
 function openLightbox(src, alt) {
   const pic = document.getElementById('imgLightboxPic');
