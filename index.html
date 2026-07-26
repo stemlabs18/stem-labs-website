@@ -2219,6 +2219,43 @@ section { position: relative; }
 .enroll-panel { display: none; }
 .enroll-panel.open { display: block; animation: fadeUp 0.38s ease; }
 
+.workshop-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--orange-light);
+  border: 1px solid rgba(242,100,25,0.25);
+  border-radius: 16px;
+  padding: 18px 24px;
+  margin-bottom: 28px;
+}
+
+.workshop-banner-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: var(--orange);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.workshop-banner-text h5 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.workshop-banner-text p {
+  font-size: 13px;
+  color: rgba(10,10,20,0.6);
+  line-height: 1.5;
+}
+
 .enroll-domain-tabs {
   display: flex;
   gap: 10px;
@@ -2252,6 +2289,11 @@ section { position: relative; }
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-bottom: 8px;
+}
+
+.track-grid-single {
+  grid-template-columns: minmax(0, 360px);
+  justify-content: center;
 }
 
 .track-card {
@@ -2299,6 +2341,44 @@ section { position: relative; }
   color: var(--ink);
   margin-bottom: 12px;
   letter-spacing: -0.3px;
+}
+
+.track-price {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.track-price span {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(10,10,20,0.4);
+}
+
+.track-desc {
+  font-size: 13px;
+  color: rgba(10,10,20,0.55);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.track-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.track-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: 100px;
+  background: var(--paper);
+  color: rgba(10,10,20,0.6);
+  border: 1px solid var(--rule);
 }
 
 .track-list {
@@ -3077,11 +3157,11 @@ section { position: relative; }
               <h3 class="ec-title">Enroll Your Child</h3>
             </div>
           </div>
-          <p class="ec-desc">Live online or school-visit offline sessions — structured by grade, taught by STEM experts. Covering Classes 1 through 10 across all STEM domains.</p>
+          <p class="ec-desc">10-hour workshops across Robotics, AR/VR and Drone Technology — Basic, Medium and Advanced levels, taught by STEM experts, with a certificate for every student who completes the workshop.</p>
           <div class="ec-pills">
-            <span class="ec-pill"><i class="fas fa-wifi fa-xs"></i> Online</span>
-            <span class="ec-pill"><i class="fas fa-school fa-xs"></i> Offline</span>
-            <span class="ec-pill"><i class="fas fa-users fa-xs"></i> Grades 1–10</span>
+            <span class="ec-pill"><i class="fas fa-clock fa-xs"></i> 10 Hours</span>
+            <span class="ec-pill"><i class="fas fa-certificate fa-xs"></i> Certificate</span>
+            <span class="ec-pill"><i class="fas fa-layer-group fa-xs"></i> 3 Levels</span>
           </div>
           <button class="ec-cta"><i class="fas fa-arrow-right"></i> View Programs</button>
         </div>
@@ -3184,9 +3264,19 @@ section { position: relative; }
         <button class="back-btn" onclick="closeEnroll()"><i class="fas fa-arrow-left"></i> Back</button>
         <span class="panel-heading">Enrollment Programs</span>
       </div>
+
+      <div class="workshop-banner">
+        <div class="workshop-banner-icon"><i class="fas fa-clock"></i></div>
+        <div class="workshop-banner-text">
+          <h5>10-Hour Workshop, Every Track</h5>
+          <p>Each level below runs for 10 hours of hands-on classes and ends with a certificate of completion for every student who finishes the workshop.</p>
+        </div>
+      </div>
+
       <div class="enroll-domain-tabs">
         <button class="enroll-domain-tab active" onclick="switchEnrollDomain('robotics', this)"><i class="fas fa-robot"></i> Robotics</button>
         <button class="enroll-domain-tab" onclick="switchEnrollDomain('arvr', this)"><i class="fas fa-vr-cardboard"></i> AR & VR</button>
+        <button class="enroll-domain-tab" onclick="switchEnrollDomain('drone', this)"><i class="fas fa-paper-plane"></i> Drone Technology</button>
       </div>
 
       <div class="enroll-domain-pane active" id="enroll-robotics">
@@ -3196,12 +3286,17 @@ section { position: relative; }
             <div class="track-body">
               <div class="track-level">Level 01</div>
               <h4>Basic</h4>
+              <div class="track-price">₹1,100 <span>/ student</span></div>
+              <p class="track-desc">Get comfortable with core electronics and sensing — the building blocks behind every robot.</p>
               <ul class="track-list">
-                <li><i class="fas fa-circle"></i> Ultrasonic, IR, LDR & sound sensors</li>
-                <li><i class="fas fa-circle"></i> Smoke / gas sensor &amp; DHT11 sensor</li>
-                <li><i class="fas fa-circle"></i> Arduino Uno fundamentals</li>
-                <li><i class="fas fa-circle"></i> Basics of drones</li>
+                <li><i class="fas fa-circle"></i> Sensors: Ultrasonic, IR, LDR, Sound, Smoke/Gas &amp; DHT11</li>
+                <li><i class="fas fa-circle"></i> Arduino Uno fundamentals &amp; wiring</li>
+                <li><i class="fas fa-circle"></i> Basics of drone technology</li>
               </ul>
+              <div class="track-meta">
+                <span><i class="fas fa-clock"></i> 10 Hours</span>
+                <span><i class="fas fa-certificate"></i> Certificate Included</span>
+              </div>
               <button class="track-cta"><i class="fas fa-arrow-right"></i> Enquire — Basic</button>
             </div>
           </div>
@@ -3210,12 +3305,17 @@ section { position: relative; }
             <div class="track-body">
               <div class="track-level">Level 02</div>
               <h4>Medium</h4>
+              <div class="track-price">₹1,500 <span>/ student</span></div>
+              <p class="track-desc">Apply Basic-level sensors into a real, working build — students take a robot from wiring to motion.</p>
               <ul class="track-list">
-                <li><i class="fas fa-circle"></i> All Basic-level sensors, applied</li>
-                <li><i class="fas fa-circle"></i> Build an Obstacle Avoiding Car</li>
-                <li><i class="fas fa-circle"></i> Sensor-to-motor logic &amp; wiring</li>
-                <li><i class="fas fa-circle"></i> Guided project assembly</li>
+                <li><i class="fas fa-circle"></i> All Basic-level sensors, applied hands-on</li>
+                <li><i class="fas fa-circle"></i> Build a working Obstacle Avoiding Car</li>
+                <li><i class="fas fa-circle"></i> Sensor-to-motor logic &amp; circuit wiring</li>
               </ul>
+              <div class="track-meta">
+                <span><i class="fas fa-clock"></i> 10 Hours</span>
+                <span><i class="fas fa-certificate"></i> Certificate Included</span>
+              </div>
               <button class="track-cta"><i class="fas fa-arrow-right"></i> Enquire — Medium</button>
             </div>
           </div>
@@ -3224,12 +3324,16 @@ section { position: relative; }
             <div class="track-body">
               <div class="track-level">Level 03</div>
               <h4>Advanced</h4>
+              <div class="track-price">₹2,500 <span>/ student</span></div>
               <ul class="track-list">
                 <li><i class="fas fa-circle"></i> Obstacle Avoidance Car</li>
                 <li><i class="fas fa-circle"></i> Human Following Car</li>
                 <li><i class="fas fa-circle"></i> Wi-Fi Controlled RC Car</li>
-                <li><i class="fas fa-circle"></i> Independent build &amp; presentation</li>
               </ul>
+              <div class="track-meta">
+                <span><i class="fas fa-clock"></i> 10 Hours</span>
+                <span><i class="fas fa-certificate"></i> Certificate Included</span>
+              </div>
               <button class="track-cta"><i class="fas fa-arrow-right"></i> Enquire — Advanced</button>
             </div>
           </div>
@@ -3237,13 +3341,50 @@ section { position: relative; }
       </div>
 
       <div class="enroll-domain-pane" id="enroll-arvr">
-        <div class="arvr-panel">
-          <div class="arvr-icon"><i class="fas fa-vr-cardboard"></i></div>
-          <div class="arvr-info">
-            <h4>AR & VR — Complete Curriculum</h4>
-            <p>Immersive augmented and virtual reality sessions covering the full curriculum in one structured track — no separate levels, just steady hands-on progress.</p>
+        <div class="track-grid track-grid-single">
+          <div class="track-card track-basic" onclick="openIntake('AR / VR','Basic')">
+            <div class="track-top"></div>
+            <div class="track-body">
+              <div class="track-level">Level 01</div>
+              <h4>Basic</h4>
+              <div class="track-price">₹1,000 <span>/ student</span></div>
+              <p class="track-desc">An introduction to immersive technology — how AR and VR work, where they're used, and hands-on time with headsets and mobile AR apps.</p>
+              <ul class="track-list">
+                <li><i class="fas fa-circle"></i> Core AR/VR concepts &amp; terminology</li>
+                <li><i class="fas fa-circle"></i> Using AR apps &amp; marker-based tracking</li>
+                <li><i class="fas fa-circle"></i> Exploring VR headsets &amp; 360° environments</li>
+              </ul>
+              <div class="track-meta">
+                <span><i class="fas fa-clock"></i> 10 Hours</span>
+                <span><i class="fas fa-certificate"></i> Certificate Included</span>
+              </div>
+              <button class="track-cta"><i class="fas fa-arrow-right"></i> Enquire — Basic</button>
+            </div>
           </div>
-          <button class="arvr-cta" onclick="openIntake('AR / VR','Complete Curriculum')"><i class="fas fa-arrow-right"></i> Enquire Now</button>
+        </div>
+      </div>
+
+      <div class="enroll-domain-pane" id="enroll-drone">
+        <div class="track-grid track-grid-single">
+          <div class="track-card track-basic" onclick="openIntake('Drone Technology','Basic')">
+            <div class="track-top"></div>
+            <div class="track-body">
+              <div class="track-level">Level 01</div>
+              <h4>Basic</h4>
+              <div class="track-price">₹1,000 <span>/ student</span></div>
+              <p class="track-desc">Understand what makes a drone fly — parts, principles, basic sensors and safe handling.</p>
+              <ul class="track-list">
+                <li><i class="fas fa-circle"></i> Drone components: motors, propellers, ESCs</li>
+                <li><i class="fas fa-circle"></i> Flight principles &amp; basic sensors (IMU, gyroscope)</li>
+                <li><i class="fas fa-circle"></i> Safe handling &amp; pre-flight checks</li>
+              </ul>
+              <div class="track-meta">
+                <span><i class="fas fa-clock"></i> 10 Hours</span>
+                <span><i class="fas fa-certificate"></i> Certificate Included</span>
+              </div>
+              <button class="track-cta"><i class="fas fa-arrow-right"></i> Enquire — Basic</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3279,6 +3420,7 @@ section { position: relative; }
           <div class="intake-chip-row" id="intakeInterestRow">
             <button type="button" class="intake-chip" data-value="Robotics">Robotics</button>
             <button type="button" class="intake-chip" data-value="AR / VR">AR / VR</button>
+            <button type="button" class="intake-chip" data-value="Drone Technology">Drone Technology</button>
             <button type="button" class="intake-chip" data-value="Intro to Robotics">Intro to Robotics</button>
           </div>
           <input type="hidden" name="interest" id="intakeInterestValue" required>
@@ -3694,7 +3836,16 @@ document.getElementById('intakeInterestRow').addEventListener('click', e => {
   const chip = e.target.closest('.intake-chip');
   if (!chip) return;
   selectChip('intakeInterestRow', 'intakeInterestValue', chip.dataset.value);
-  document.getElementById('intakeSectionField').style.display = (chip.dataset.value === 'Robotics') ? 'block' : 'none';
+  if (chip.dataset.value === 'Robotics') {
+    document.getElementById('intakeSectionField').style.display = 'block';
+  } else if (chip.dataset.value === 'AR / VR' || chip.dataset.value === 'Drone Technology') {
+    document.getElementById('intakeSectionField').style.display = 'none';
+    selectChip('intakeSectionRow', 'intakeSectionValue', 'Basic');
+  } else {
+    document.getElementById('intakeSectionField').style.display = 'none';
+    document.getElementById('intakeSectionValue').value = '';
+    document.querySelectorAll('#intakeSectionRow .intake-chip').forEach(c => c.classList.remove('selected'));
+  }
 });
 
 document.getElementById('intakeSectionRow').addEventListener('click', e => {
@@ -3713,10 +3864,14 @@ function openIntake(interest, section) {
   document.getElementById('intakeEyebrow').textContent = interest + ' Enquiry';
   document.getElementById('intakeTitle').textContent = 'Tell us about your child';
   selectChip('intakeInterestRow', 'intakeInterestValue', interest);
-  document.getElementById('intakeSectionField').style.display = (interest === 'Robotics') ? 'block' : 'none';
-  if (section && section !== 'Complete Curriculum') {
-    selectChip('intakeSectionRow', 'intakeSectionValue', section);
+  if (interest === 'Robotics') {
+    document.getElementById('intakeSectionField').style.display = 'block';
+    if (section) selectChip('intakeSectionRow', 'intakeSectionValue', section);
+  } else if (interest === 'AR / VR' || interest === 'Drone Technology') {
+    document.getElementById('intakeSectionField').style.display = 'none';
+    selectChip('intakeSectionRow', 'intakeSectionValue', 'Basic');
   } else {
+    document.getElementById('intakeSectionField').style.display = 'none';
     document.getElementById('intakeSectionValue').value = '';
     document.querySelectorAll('#intakeSectionRow .intake-chip').forEach(c => c.classList.remove('selected'));
   }
