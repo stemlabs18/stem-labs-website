@@ -3347,7 +3347,7 @@ section { position: relative; }
             <div class="track-body">
               <div class="track-level">Level 01</div>
               <h4>Basic</h4>
-              <div class="track-price">₹1,000 <span>/ student</span></div>
+              <div class="track-price">₹499 <span>/ student</span></div>
               <p class="track-desc">An introduction to immersive technology — how AR and VR work, where they're used, and hands-on time with headsets and mobile AR apps.</p>
               <ul class="track-list">
                 <li><i class="fas fa-circle"></i> Core AR/VR concepts &amp; terminology</li>
@@ -3371,7 +3371,7 @@ section { position: relative; }
             <div class="track-body">
               <div class="track-level">Level 01</div>
               <h4>Basic</h4>
-              <div class="track-price">₹1,000 <span>/ student</span></div>
+              <div class="track-price">₹699 <span>/ student</span></div>
               <p class="track-desc">Understand what makes a drone fly — parts, principles, basic sensors and safe handling.</p>
               <ul class="track-list">
                 <li><i class="fas fa-circle"></i> Drone components: motors, propellers, ESCs</li>
@@ -3408,12 +3408,8 @@ section { position: relative; }
           <input type="text" name="name" placeholder="Student's full name" required>
         </div>
         <div class="intake-field">
-          <label>School Name *</label>
-          <input type="text" name="school" placeholder="Enter school name" required>
-        </div>
-        <div class="intake-field">
-          <label>Class *</label>
-          <input type="text" name="grade" placeholder="e.g. Class 6" required>
+          <label>Education *</label>
+          <input type="text" name="education" placeholder="e.g. Class 6, ABC School" required>
         </div>
         <div class="intake-field">
           <label>Interest *</label>
@@ -3421,7 +3417,6 @@ section { position: relative; }
             <button type="button" class="intake-chip" data-value="Robotics">Robotics</button>
             <button type="button" class="intake-chip" data-value="AR / VR">AR / VR</button>
             <button type="button" class="intake-chip" data-value="Drone Technology">Drone Technology</button>
-            <button type="button" class="intake-chip" data-value="Intro to Robotics">Intro to Robotics</button>
           </div>
           <input type="hidden" name="interest" id="intakeInterestValue" required>
         </div>
@@ -3435,17 +3430,16 @@ section { position: relative; }
           <input type="hidden" name="section" id="intakeSectionValue">
         </div>
         <div class="intake-field">
-          <label>WhatsApp Number *</label>
-          <input type="tel" name="whatsapp" placeholder="+91 XXXXX XXXXX" required>
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
         </div>
         <div class="intake-field">
-          <label>Preferred Mode *</label>
-          <div class="intake-chip-row" id="intakeModeRow">
-            <button type="button" class="intake-chip" data-value="Online">Online</button>
-            <button type="button" class="intake-chip" data-value="Offline">Offline</button>
-            <button type="button" class="intake-chip" data-value="Both, either works">Both, either works</button>
+          <label>Workshop Type *</label>
+          <div class="intake-chip-row" id="intakeKitRow">
+            <button type="button" class="intake-chip" data-value="Workshop Only">Workshop Only</button>
+            <button type="button" class="intake-chip" data-value="Workshop + Personal Kit">Workshop + Personal Kit</button>
           </div>
-          <input type="hidden" name="mode" id="intakeModeValue" required>
+          <input type="hidden" name="kit" id="intakeKitValue" required>
         </div>
         <button type="submit" class="intake-submit"><i class="fas fa-paper-plane"></i> Send Enquiry</button>
         <p class="intake-hint">We'll reach out on WhatsApp within 24 hours.</p>
@@ -3854,10 +3848,10 @@ document.getElementById('intakeSectionRow').addEventListener('click', e => {
   selectChip('intakeSectionRow', 'intakeSectionValue', chip.dataset.value);
 });
 
-document.getElementById('intakeModeRow').addEventListener('click', e => {
+document.getElementById('intakeKitRow').addEventListener('click', e => {
   const chip = e.target.closest('.intake-chip');
   if (!chip) return;
-  selectChip('intakeModeRow', 'intakeModeValue', chip.dataset.value);
+  selectChip('intakeKitRow', 'intakeKitValue', chip.dataset.value);
 });
 
 function openIntake(interest, section) {
@@ -3891,9 +3885,9 @@ document.getElementById('intakeForm').addEventListener('submit', function(e) {
   const section = fd.get('section') ? ` (${fd.get('section')})` : '';
   const msg = `Hi STEM LABS! I'd like to enquire about *${interest}${section}*.%0A%0A` +
     `Name: ${fd.get('name')}%0A` +
-    `School: ${fd.get('school')}%0A` +
-    `Class: ${fd.get('grade')}%0A` +
-    `Preferred Mode: ${fd.get('mode') || 'Not specified'}`;
+    `Education: ${fd.get('education')}%0A` +
+    `Phone: ${fd.get('phone')}%0A` +
+    `Type: ${fd.get('kit') || 'Not specified'}`;
   window.open(`https://wa.me/917780440734?text=${msg}`, '_blank');
   closeIntake();
   this.reset();
