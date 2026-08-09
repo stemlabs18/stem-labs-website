@@ -3527,10 +3527,6 @@ section { position: relative; }
             <video controls poster="./Images/vij1.jpg" preload="none"><source src="./Videos/vijetha1.mp4" type="video/mp4"></video>
             <div class="ss-caption"><h4>Vijetha E.M School</h4></div>
           </div>
-          <div class="ss-slide">
-            <video controls poster="./Images/vidya1.jpg" preload="none"><source src="./Videos/vidyarthi1.mp4" type="video/mp4"></video>
-            <div class="ss-caption"><h4>Vidyarthi School</h4></div>
-          </div>
         </div>
         <div class="ss-counter"><span class="ss-cur" id="momentsVideoCur">01</span> / <span id="momentsVideoTotal">03</span></div>
         <div class="ss-nav">
@@ -3538,8 +3534,6 @@ section { position: relative; }
           <button onclick="ssMove('momentsVideoTrack', 1)"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
-      <div class="ss-dots" id="momentsVideoDots"></div>
-      <p class="moments-video-note">Drop your clips into a <code>Videos</code> folder next to this page as <code>mary1.mp4</code>, <code>vijetha1.mp4</code> and <code>vidyarthi1.mp4</code> — they'll play here automatically.</p>
     </div>
   </div>
 </section>
@@ -3557,18 +3551,6 @@ section { position: relative; }
       <div class="school-badge">
         <div class="school-icon"><i class="fas fa-school"></i></div>
         <span>Vijetha E.M School</span>
-      </div>
-      <div class="school-badge">
-        <div class="school-icon"><i class="fas fa-school"></i></div>
-        <span>Vidyarthi School</span>
-      </div>
-      <div class="school-badge">
-        <div class="school-icon"><i class="fas fa-school"></i></div>
-        <span>DPS Kollur</span>
-      </div>
-      <div class="school-badge">
-        <div class="school-icon"><i class="fas fa-school"></i></div>
-        <span>DPS Patancheruvu</span>
       </div>
     </div>
   </div>
@@ -3891,9 +3873,7 @@ document.getElementById('intakeForm').addEventListener('submit', function(e) {
 /* STUDENT MOMENTS: school selector + photos + toggle */
 const MOMENTS_SCHOOLS = [
   { key: 'mary', name: "St. Mary's School", prefix: 'mary', start: 1, end: 10 },
-  { key: 'vijetha', name: 'Vijetha School', prefix: 'vij', start: 1, end: 10 },
-  { key: 'dps-kollur', name: 'DPS Kollur', prefix: 'dps', start: 1, end: 6 },
-  { key: 'dps-patancheruvu', name: 'DPS Patancheruvu', prefix: 'dps', start: 7, end: 12 }
+  { key: 'vijetha', name: 'Vijetha School', prefix: 'vij', start: 1, end: 10 }
 ];
 
 function buildMomentsSchoolList() {
