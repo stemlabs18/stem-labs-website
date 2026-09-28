@@ -2050,9 +2050,9 @@ section { position: relative; }
 
 .team-heading {
   font-family: var(--font-display);
-  font-size: clamp(30px, 4vw, 46px);
+  font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
   text-align: center;
   color: var(--ink);
   margin-bottom: 72px;
@@ -2077,11 +2077,11 @@ section { position: relative; }
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 90px;
+  gap: 30px;
 }
 
 .team-card {
-  width: 200px;
+  width: 240px;
   text-align: center;
 }
 
@@ -2106,10 +2106,11 @@ section { position: relative; }
 
 .team-card h4 {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   color: var(--ink);
   margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .team-role {
@@ -3580,35 +3581,37 @@ section { position: relative; }
 </div>
 
 <!-- TEAM -->
-
 <section class="team" id="team">
   <div class="team-inner">
-    <p class="section-label">Meet the People Behind STEM LABS</p>
-    <h2 class="section-title reveal">Our Core Team</h2>
+
+    <h2 class="team-heading reveal">
+      Meet our
+      <span class="hl">Core Team
+        <svg viewBox="0 0 220 16" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 11 C 50 2, 150 2, 218 9" fill="none" stroke="#f26419" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 14 C 70 7, 150 7, 200 12" fill="none" stroke="#f26419" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </h2>
+
     <div class="team-grid">
 
       <div class="team-card reveal">
         <img src="./Images/muni.jpeg" alt="Munendra K" class="team-photo">
-        <div class="team-info">
-          <h4>Munendra K</h4>
-          <span class="team-role">Founder & CEO</span>
-        </div>
+        <h4>Munendra K</h4>
+        <span class="team-role">Founder &amp; CEO</span>
       </div>
 
       <div class="team-card reveal">
         <img src="./Images/chandu.png" alt="Chandu Vangara" class="team-photo">
-        <div class="team-info">
-          <h4>Chandu Vangara</h4>
-          <span class="team-role">Technical Manager</span>
-        </div>
+        <h4>Chandu Vangara</h4>
+        <span class="team-role">Technical Manager</span>
       </div>
 
       <div class="team-card reveal">
-        <img src="./Images/jaya.jpeg" alt="Jaya Prakash Naidu" class="team-photo" style="object-position: center 10%;">
-        <div class="team-info">
-          <h4>Jaya Prakash Naidu</h4>
-          <span class="team-role">Co Founder</span>
-        </div>
+        <img src="./Images/jaya.jpeg" alt="Jaya Prakash Naidu" class="team-photo">
+        <h4>Jaya Prakash Naidu</h4>
+        <span class="team-role">Co Founder</span>
       </div>
 
     </div>
