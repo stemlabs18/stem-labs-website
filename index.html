@@ -3979,13 +3979,12 @@ function switchMoments(view) {
 /* SHOWCASE SLIDERS */
 const stemxSliders = {};
 function initStemxSlider(trackId, dotsId, curId, totalId, autoplayMs) {
-  const track = document.getElementById(trackId);
-  if (!track) return;
+   const track = document.getElementById(trackId);
+  const dotsContainer = document.getElementById(dotsId);
+  if (!track || !dotsContainer) return;
   const slides = track.children;
   const count = slides.length;
-  const dotsContainer = document.getElementById(dotsId);
   let index = 0;
-
   for (let i = 0; i < count; i++) {
     const dot = document.createElement('button');
     if (i === 0) dot.classList.add('active');
