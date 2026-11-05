@@ -2,9 +2,13 @@
   "id": "/",
   "name": "The STEM Labs",
   "short_name": "STEM Labs",
+  "description": "Robotics, coding and STEM learning labs for schools and students.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["education"],
+  "lang": "en",
   "background_color": "#ffffff",
   "theme_color": "#0d6efd",
   "icons": [
