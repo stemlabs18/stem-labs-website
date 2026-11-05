@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "in.thestemlabs.app",
+        "sha256_cert_fingerprints": ["DB:D7:32:1A:72:08:AE:B0:44:17:4F:F8:4A:64:0D:A0:27:5D:74:06:3E:30:CE:B8:29:7D:8C:7C:EE:1A:7D:9B"]
+      }
+    }]
